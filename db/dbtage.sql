@@ -215,6 +215,7 @@ CREATE TABLE `usuario` (
   `idper` bigint(10) DEFAULT NULL COMMENT 'Codigo de perfil',
   `nomusu` varchar(50) DEFAULT NULL COMMENT 'Nombre de usuario',
   `empusu` varchar(50) DEFAULT NULL COMMENT 'Empresa de usuario',
+  `emausu` varchar(200) DEFAULT NULL COMMENT 'Correo de usuario',
   `pasusu` varchar(100) DEFAULT NULL COMMENT 'Contraseña de usuario',
   `nitusu` varchar(10) DEFAULT NULL COMMENT 'Numero de identificacion del usuario',
   `fotusu` varchar(255) DEFAULT NULL COMMENT 'Foto de usuario',
