@@ -24,17 +24,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `archive`
---
-
-CREATE TABLE `archive` (
-  `idarc` int(10) NOT NULL COMMENT 'Codigo unico autoincrementable de cada archivo',
-  `idntcm` bigint(10) DEFAULT NULL COMMENT 'Codigo de noticia o comunicado'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `club`
 --
 
@@ -42,7 +31,7 @@ CREATE TABLE `club` (
   `idclb` bigint(10) NOT NULL COMMENT 'COdigo unico autoincrementable para identificar cada club',
   `idins` bigint(10) DEFAULT NULL COMMENT 'Codigo de inscripcion',
   `nomclb` varchar(50) DEFAULT NULL COMMENT 'Nombre del club',
-  `idubi` bigint(10) DEFAULT NULL COMMENT 'Codigo de ubicacion',
+  `idubi` int(5) DEFAULT NULL COMMENT 'Codigo de ubicacion',
   `anoforclb` date DEFAULT NULL COMMENT 'Año de formacion del club',
   `cstmenusu` int(9) DEFAULT NULL COMMENT 'Costo de mensualidad del club',
   `preclb` varchar(50) DEFAULT NULL COMMENT 'Presidente del club'
@@ -70,7 +59,6 @@ CREATE TABLE `configuracion` (
 --
 
 CREATE TABLE `detevento` (
-  `iddeteve` bigint(10) NOT NULL COMMENT 'Codigo unico autoincrementable de detalles de evento',
   `idclb` bigint(10) DEFAULT NULL COMMENT 'Codigo de club',
   `ideve` bigint(10) DEFAULT NULL COMMENT 'Codigo de evento'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -94,7 +82,7 @@ CREATE TABLE `dominio` (
 
 CREATE TABLE `evento` (
   `ideve` bigint(10) NOT NULL COMMENT 'Codigo unico autoincrementable de evento',
-  `idubi` bigint(10) DEFAULT NULL COMMENT 'Codigo de ubicacion',
+  `idubi` int(5) DEFAULT NULL COMMENT 'Codigo de ubicacion',
   `nomeve` varchar(50) DEFAULT NULL COMMENT 'Nombre de evento',
   `deseve` text DEFAULT NULL COMMENT 'Descripcion de evento',
   `tpoeve` int(5) DEFAULT NULL COMMENT 'Tipo de evento',
@@ -142,7 +130,12 @@ CREATE TABLE `notcom` (
 --
 
 CREATE TABLE `pagina` (
-  `idpag` int(2) NOT NULL COMMENT 'Codigo unico autoincrementable de  pagina'
+  `idpag` int(2) NOT NULL COMMENT 'Codigo unico autoincrementable de  pagina',
+  `nompag` varchar(255) DEFAULT NULL,
+  `rutpag` varchar(255) DEFAULT NULL,
+  `mospag` tinyint(1) DEFAULT NULL,
+  `ordpag` int(5) DEFAULT NULL,
+  `icopag` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -152,7 +145,6 @@ CREATE TABLE `pagina` (
 --
 
 CREATE TABLE `pagper` (
-  `idpgpr` int(2) NOT NULL COMMENT 'Codigo unico autoincrementable de pagina por perfil',
   `idpag` int(2) DEFAULT NULL COMMENT 'Codigo de pagina',
   `idper` bigint(10) DEFAULT NULL COMMENT 'Codigo de perfil'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -165,7 +157,8 @@ CREATE TABLE `pagper` (
 
 CREATE TABLE `perfil` (
   `idper` bigint(10) NOT NULL COMMENT 'Codigo unico autoincrementable de perfil',
-  `nomper` varchar(20) DEFAULT NULL COMMENT 'Nombre de perfil'
+  `nomper` varchar(50) DEFAULT NULL COMMENT 'Nombre de perfil',
+  `pagini` int(5) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -206,8 +199,8 @@ CREATE TABLE `traspaso` (
 --
 
 CREATE TABLE `ubicacion` (
-  `idubi` bigint(10) NOT NULL COMMENT 'Codigo de ubicacion',
-  `nomubi` varchar(20) DEFAULT NULL COMMENT 'Nombre de ubicacion',
+  `idubi` int(5) NOT NULL COMMENT 'Codigo de ubicacion',
+  `nomubi` varchar(50) DEFAULT NULL COMMENT 'Nombre de ubicacion',
   `depubi` int(5) DEFAULT NULL COMMENT 'Depende ubicacion'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -222,18 +215,18 @@ CREATE TABLE `usuario` (
   `idper` bigint(10) DEFAULT NULL COMMENT 'Codigo de perfil',
   `nomusu` varchar(50) DEFAULT NULL COMMENT 'Nombre de usuario',
   `empusu` varchar(50) DEFAULT NULL COMMENT 'Empresa de usuario',
+  `pasusu` varchar(100) DEFAULT NULL COMMENT 'Contraseña de usuario',
   `nitusu` varchar(10) DEFAULT NULL COMMENT 'Numero de identificacion del usuario',
   `fotusu` varchar(255) DEFAULT NULL COMMENT 'Foto de usuario',
   `expusu` date DEFAULT NULL COMMENT 'Experiencia del usuario',
-  `edtusu` int(11) DEFAULT NULL COMMENT 'Estadisticas del usuario',
+  `edtusu` bigint(11) DEFAULT NULL COMMENT 'Estadisticas del usuario',
   `hisusu` text DEFAULT NULL COMMENT 'Historial del usuario',
   `salusu` decimal(11,2) DEFAULT NULL COMMENT 'Salario del usuario',
-  `hrrusu` time DEFAULT NULL COMMENT 'Horario del usuario',
-  `sexusu` int(5) DEFAULT NULL COMMENT 'Sexo del usuario',
   `tponit` int(5) DEFAULT NULL COMMENT 'Tipo de numero de identificacion',
   `genusu` int(5) DEFAULT NULL COMMENT 'Genero del usuario',
-  `ageusu` int(2) DEFAULT NULL COMMENT 'Edad del usuario',
-  `idubi` bigint(10) DEFAULT NULL COMMENT 'Codigo de usuario'
+  `fhnusu` int(2) DEFAULT NULL COMMENT 'Fecha de nacimiento del usuario',
+  `actusu` tinyint(1) DEFAULT NULL COMMENT 'Activo usuario',
+  `idubi` int(10) DEFAULT NULL COMMENT 'Codigo de usuario'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -245,19 +238,14 @@ CREATE TABLE `usuario` (
 CREATE TABLE `valor` (
   `idval` int(5) NOT NULL COMMENT 'Codigo unico autoincrementable del valor',
   `nomval` varchar(100) DEFAULT NULL COMMENT 'Nombre de valor',
-  `iddom` int(3) DEFAULT NULL COMMENT 'Codigo de dominio'
+  `iddom` int(3) DEFAULT NULL COMMENT 'Codigo de dominio',
+  `parval` varchar(255) DEFAULT NULL,
+  `actval` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Índices para tablas volcadas
 --
-
---
--- Indices de la tabla `archive`
---
-ALTER TABLE `archive`
-  ADD PRIMARY KEY (`idarc`),
-  ADD KEY `arcntcm` (`idntcm`);
 
 --
 -- Indices de la tabla `club`
@@ -277,7 +265,6 @@ ALTER TABLE `configuracion`
 -- Indices de la tabla `detevento`
 --
 ALTER TABLE `detevento`
-  ADD PRIMARY KEY (`iddeteve`),
   ADD KEY `detevelcb` (`idclb`),
   ADD KEY `deteves` (`ideve`);
 
@@ -325,7 +312,6 @@ ALTER TABLE `pagina`
 -- Indices de la tabla `pagper`
 --
 ALTER TABLE `pagper`
-  ADD PRIMARY KEY (`idpgpr`),
   ADD KEY `pgprper` (`idper`),
   ADD KEY `pgprpag` (`idpag`);
 
@@ -365,7 +351,6 @@ ALTER TABLE `usuario`
   ADD PRIMARY KEY (`idusu`),
   ADD KEY `usuper` (`idper`),
   ADD KEY `usuubi` (`idubi`),
-  ADD KEY `uvsex` (`sexusu`),
   ADD KEY `uvtpnt` (`tponit`),
   ADD KEY `uvgnus` (`genusu`);
 
@@ -381,28 +366,16 @@ ALTER TABLE `valor`
 --
 
 --
--- AUTO_INCREMENT de la tabla `archive`
---
-ALTER TABLE `archive`
-  MODIFY `idarc` int(10) NOT NULL AUTO_INCREMENT COMMENT 'Codigo unico autoincrementable de cada archivo';
-
---
 -- AUTO_INCREMENT de la tabla `club`
 --
 ALTER TABLE `club`
-  MODIFY `idclb` bigint(10) NOT NULL AUTO_INCREMENT COMMENT 'COdigo unico autoincrementable para identificar cada club';
+  MODIFY `idclb` bigint(5) NOT NULL AUTO_INCREMENT COMMENT 'Codigo unico autoincrementable para identificar cada club';
 
 --
 -- AUTO_INCREMENT de la tabla `configuracion`
 --
 ALTER TABLE `configuracion`
   MODIFY `idcon` int(5) NOT NULL AUTO_INCREMENT COMMENT 'Codigo de configuracion';
-
---
--- AUTO_INCREMENT de la tabla `detevento`
---
-ALTER TABLE `detevento`
-  MODIFY `iddeteve` bigint(10) NOT NULL AUTO_INCREMENT COMMENT 'Codigo unico autoincrementable de detalles de evento';
 
 --
 -- AUTO_INCREMENT de la tabla `dominio`
@@ -433,12 +406,6 @@ ALTER TABLE `notcom`
 --
 ALTER TABLE `pagina`
   MODIFY `idpag` int(2) NOT NULL AUTO_INCREMENT COMMENT 'Codigo unico autoincrementable de  pagina';
-
---
--- AUTO_INCREMENT de la tabla `pagper`
---
-ALTER TABLE `pagper`
-  MODIFY `idpgpr` int(2) NOT NULL AUTO_INCREMENT COMMENT 'Codigo unico autoincrementable de pagina por perfil';
 
 --
 -- AUTO_INCREMENT de la tabla `perfil`
@@ -473,12 +440,6 @@ ALTER TABLE `valor`
 --
 -- Restricciones para tablas volcadas
 --
-
---
--- Filtros para la tabla `archive`
---
-ALTER TABLE `archive`
-  ADD CONSTRAINT `arcntcm` FOREIGN KEY (`idntcm`) REFERENCES `notcom` (`idntcm`);
 
 --
 -- Filtros para la tabla `club`
@@ -548,7 +509,6 @@ ALTER TABLE `usuario`
   ADD CONSTRAINT `usuper` FOREIGN KEY (`idper`) REFERENCES `perfil` (`idper`),
   ADD CONSTRAINT `usuubi` FOREIGN KEY (`idubi`) REFERENCES `ubicacion` (`idubi`),
   ADD CONSTRAINT `uvgnus` FOREIGN KEY (`genusu`) REFERENCES `valor` (`idval`),
-  ADD CONSTRAINT `uvsex` FOREIGN KEY (`sexusu`) REFERENCES `valor` (`idval`),
   ADD CONSTRAINT `uvtpnt` FOREIGN KEY (`tponit`) REFERENCES `valor` (`idval`);
 
 --
