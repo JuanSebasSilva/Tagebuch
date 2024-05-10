@@ -4,30 +4,45 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Tagebuch</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="js/code.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>Tagebuch</title>
 </head>
 
 <body>
-    <header class="header">
-        <div class="menu containeru">
-            <a href="#" class="logo"><img class="img" src="img/logorecord.jpeg"></a>
-            <label for="menu">
-                <img src="#" alt>
-            </label>
-            <?PHP require_once("views/Vmenu.php"); 
-                require_once("views/Vjugmenu.php")?>
-        </div>
+    <?php
+        include("models/conexion.php");
+        $pg = isset($_REQUEST['pg']) ? $_REQUEST['pg']:NULL;
+    ?>
+    <header class="header-menu">
+        <?php
+            include("views/header.php");
+            include("views/menu.php");
+            if(!$pg){
+                $pgdf = $mmenu->getPagDf();
+                if($pgdf) $pg = $pgdf[0]['pagini'];
+            }
+        ?>
     </header>
 
-    <div class="container">
-        <?PHP 
-        require_once("views/Vmenu.php");
-        $pg = isset($_GET["pg"]) ? $_GET["pg"]:NULL;
-        if(!$pg) require_once("views/Vini.php");
+    <div class="contenido">
+        <?php
+            $rut = validar($pg);
+            if($rut){
+                include($rut[0]['rutpag']);
+            }else{
+                echo "<h3>No cuentas con permisos de acceso</h3>";
+            }
+        ?>
+            
+        /* if(!$pg) require_once("views/Vini.php");
         if($pg=="101") require_once("views/Vini.php");
         if($pg=="102") require_once("views/Vinfo.php");
         if($pg=="103") require_once("views/Vevento.php");
@@ -54,17 +69,11 @@
         if($pg=="307") require_once("views/Vjugamis.php");
         if($pg=="308") require_once("views/Vjugentreno.php");
         if($pg=="309") require_once("views/Vjugbus.php");
-        if($pg=="310") require_once("views/Vjugequi.php");
+        if($pg=="310") require_once("views/Vjugequi.php"); */
         ?>
     </div>
-
     <footer class="footer">
-        <p>Tagebuch (c) Derechos reservados</p>
+        <?php include("views/footer.php"); ?>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-    <script src="js/code.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </body>
 </html>
