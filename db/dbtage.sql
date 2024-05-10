@@ -220,7 +220,6 @@ CREATE TABLE `usuario` (
   `nitusu` varchar(10) DEFAULT NULL COMMENT 'Numero de identificacion del usuario',
   `fotusu` varchar(255) DEFAULT NULL COMMENT 'Foto de usuario',
   `expusu` date DEFAULT NULL COMMENT 'Experiencia del usuario',
-  `edtusu` bigint(11) DEFAULT NULL COMMENT 'Estadisticas del usuario',
   `hisusu` text DEFAULT NULL COMMENT 'Historial del usuario',
   `salusu` decimal(11,2) DEFAULT NULL COMMENT 'Salario del usuario',
   `tponit` int(5) DEFAULT NULL COMMENT 'Tipo de numero de identificacion',

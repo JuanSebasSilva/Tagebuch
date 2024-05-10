@@ -7,9 +7,13 @@
                 <i class='bx bx-user'></i>
             </div>
             <div class="input-box">
-                <input type="contraseña" placeholder="Contraseña" required>
+                <input type="password" placeholder="Contraseña" required>
                 <i class='bx bx-lock-alt'></i>
             </div>
+            <?php
+                $error = isset($_GET['error']) ? $_GET['error']:NULL;
+                if($error=='Ok') echo "<span class='dtinv'>Datos Invalidos</span>";
+            ?>
             <div class="remember-forgot">
                 <label><input type="checkbox">Recordar</label>
                 <a href="#">Has olvidado tu contraseña?</a>

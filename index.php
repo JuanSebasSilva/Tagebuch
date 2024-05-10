@@ -1,3 +1,4 @@
+<?php require_once("models/dont.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,20 +12,42 @@
 </head>
 
 <body>
+    <?php
+        include("models/conexion.php");
+        $pg = isset($_REQUEST['pg']) ? $_REQUEST['pg']:NULL;
+    ?>
     <header class="header">
         <a href="#" class="logo"></a>
         <div class="col img">
             <img src="img/logorecord.jpeg">
         </div>
     </header>
-    <div class="container">
-        <?php
-            $pg = isset($_GET["pg"]) ? $_GET["pg"]:NULL;
-            if(!$pg) require_once("views/Vind.php");
-            if($pg=="111") require_once("views/Vlogin.php");
-            if($pg=="112") require_once("views/Vregjug.php");
-            if($pg=="113") require_once("views/Vregclb.php");
-        ?>
+    <div class="container menu">
+        <div class="wrapper">
+            <form action="models/control.php" method="POST">
+                <h1>Iniciar Sesión</h1>
+                <div class="input-box">
+                    <input type="text" placeholder="Usuario" name="usu" required>
+                    <i class='bx bx-user'></i>
+                </div>
+                <div class="input-box">
+                    <input type="password" placeholder="Contraseña" name="con" required>
+                    <i class='bx bx-lock-alt'></i>
+                </div>
+                <?php
+                    $error = isset($_GET['error']) ? $_GET['error']:NULL;
+                    if($error=='Ok') echo "<span class='dtinv'>Datos Invalidos</span>";
+                ?>
+                <div class="remember-forgot">
+                    <label><input type="checkbox">Recordar</label>
+                    <a href="#">Has olvidado tu contraseña?</a>
+                </div>
+                <button class="btn" onclick="home()">Ingresar</button>
+                <div class="register-link"><center> 
+                    <p>No tienes una cuenta? <a href="index.php?pg=112">Registrate</a></p>
+                </center></div>
+            </form>
+        </div>
     </div>
     <footer class="footer">
         <p>Tagebuch (c) Derechos Revervados</p>
