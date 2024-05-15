@@ -77,7 +77,8 @@ class Mtra{
         $res = NULL;
         $modelo = new Conexion();
         $conexion = $modelo->get_conexion();
-        $sql = "SELECT * FROM traspaso";
+        $sql = "SELECT tr.idtrs, tr.fictrtrs, tr.valtrs, tr.bontrs, tr.dettrs, tr.etdtrs, tr.firclbtrs, tr.firusutrs, us.idusu, us.idper, us.nomusu, us.empusu, us.nitusu, us.fotusu, us.edtusu, us.hisusu, us.salusu, us.tponit, us.genusu, us.fhnusu, us.idubi, us.emausu, 
+        cl.idclb, cl.nomclb, cl.idubi, cl.preclb, etv.idval, etv.nomval FROM traspaso AS tr INNER JOIN usuario AS us ON tr.idusu=us.idusu INNER JOIN club AS cl ON tr.idclb=cl.idclb INNER JOIN valor AS etv ON tr.etdtrs=etv.idval";
         $result = $conexion->prepare($sql);
         $result->execute();
         $res = $result->fetchall(PDO::FETCH_ASSOC);
@@ -88,7 +89,8 @@ class Mtra{
         $res = NULL;
         $modelo = new Conexion();
         $conexion = $modelo->get_conexion();
-        $sql = "SELECT * FROM traspaso WHERE idtrs=:idtrs";
+        $sql = "SELECT tr.idtrs, tr.fictrtrs, tr.valtrs, tr.bontrs, tr.dettrs, tr.etdtrs, tr.firclbtrs, tr.firusutrs, us.idusu, us.idper, us.nomusu, us.empusu, us.nitusu, us.fotusu, us.edtusu, us.hisusu, us.salusu, us.tponit, us.genusu, us.fhnusu, us.idubi, us.emausu, 
+        cl.idclb, cl.nomclb, cl.idubi, cl.preclb, etv.idval, etv.nomval FROM traspaso AS tr INNER JOIN usuario AS us ON tr.idusu=us.idusu INNER JOIN club AS cl ON tr.idclb=cl.idclb INNER JOIN valor AS etv ON tr.etdtrs=etv.idval WHERE tr.idtrs=:idtrs";
         $result = $conexion->prepare($sql);
         $idtrs = $this->getIdtrs();
         $result->bindParam(":idtrs", $idtrs);

@@ -119,7 +119,8 @@ class Musu{
         $res = NULL;
         $modelo = new Conexion();
         $conexion = $modelo->get_conexion();
-        $sql = "SELECT * FROM usuario";
+        $sql = "SELECT us.idusu, us.nomusu, us.empusu, us.pasusu, us.nitusu, us.fotusu, us.expusu, us.edtusu, us.hisusu, us.salusu, us.tponit, us.genusu, us.fhnusu, us.actusu, us.emausu, pf.idper, pf.nomper, pf.pagini, tpv.idval AS tpiv, tpv.nomval AS tpnv, gnv.idval AS gniv, gnv.nomval AS gnnv, ub.idubi, ub.nomubi, ub.depubi 
+        FROM usuario AS us INNER JOIN perfil AS pf ON us.idper=pf.idper INNER JOIN valor AS tpv ON us.tponit=tpv.idval INNER JOIN valor AS gnv ON us.genusu=gnv.idval INNER JOIN ubicacion AS ub ON us.idubi=ub.idubi";
         $result = $conexion->prepare($sql);
         $result->execute();
         $res = $result->fetchall(PDO::FETCH_ASSOC);
@@ -130,7 +131,8 @@ class Musu{
         $res = NULL;
         $modelo = new Conexion();
         $conexion = $modelo->get_conexion();
-        $sql = "SELECT * FROM usuario WHERE idusu=:idusu";
+        $sql = "SELECT us.idusu, us.nomusu, us.empusu, us.pasusu, us.nitusu, us.fotusu, us.expusu, us.edtusu, us.hisusu, us.salusu, us.tponit, us.genusu, us.fhnusu, us.actusu, us.emausu, pf.idper, pf.nomper, pf.pagini, tpv.idval AS tpiv, tpv.nomval AS tpnv, gnv.idval AS gniv, gnv.nomval AS gnnv, ub.idubi, ub.nomubi, ub.depubi 
+        FROM usuario AS us INNER JOIN perfil AS pf ON us.idper=pf.idper INNER JOIN valor AS tpv ON us.tponit=tpv.idval INNER JOIN valor AS gnv ON us.genusu=gnv.idval INNER JOIN ubicacion AS ub ON us.idubi=ub.idubi WHERE us.idusu=:idusu";
         $result = $conexion->prepare($sql);
         $idusu = $this->getIdusu();
         $result->bindParam(":idusu", $idusu);
