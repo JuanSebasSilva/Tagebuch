@@ -49,7 +49,8 @@ class Mins{
         $res = NULL;
         $modelo = new Conexion();
         $conexion = $modelo->get_conexion();
-        $sql = "SELECT * FROM inscripcion";
+        $sql = "SELECT ins.idins, ins.fhins, ins.etdins, ins.durins, us.idusu, us.idper, us.nomusu, us.empusu, us.emausu, us.nitusu, us.fotusu, us.expusu, us.hisusu, us.salusu, us.tponit, 
+        us.genusu, us.fhnusu, us.idubi, pl.idpla, pl.idclb FROM inscripcion AS ins INNER JOIN usuario AS us ON ins.idusu=us.idusu INNER JOIN plantilla AS pl ON ins.idpla=pl.idpla";
         $result = $conexion->prepare($sql);
         $result->execute();
         $res = $result->fetchall(PDO::FETCH_ASSOC);
@@ -60,7 +61,8 @@ class Mins{
         $res = NULL;
         $modelo = new Conexion();
         $conexion = $modelo->get_conexion();
-        $sql = "SELECT * FROM inscripcion WHERE idins=:idins";
+        $sql = "SELECT ins.idins, ins.fhins, ins.etdins, ins.durins, us.idusu, us.idper, us.nomusu, us.empusu, us.emausu, us.nitusu, us.fotusu, us.expusu, us.hisusu, us.salusu, us.tponit, 
+        us.genusu, us.fhnusu, us.idubi, pl.idpla, pl.idclb FROM inscripcion AS ins INNER JOIN usuario AS us ON ins.idusu=us.idusu INNER JOIN plantilla AS pl ON ins.idpla=pl.idpla WHERE ins.idins=:idins";
         $result = $conexion->prepare($sql);
         $idins = $this->getIdins();
         $result->bindParam(":idins", $idins);

@@ -8,47 +8,47 @@ class Mclb{
     private $cstmenusu;
     private $preclb;
 
-    public function getIdclb(){
+    function getIdclb(){
         return $this->idclb;
     }
-    public function getIdins(){
+    function getIdins(){
         return $this->idins;
     }
-    public function getNomclb(){
+    function getNomclb(){
         return $this->nomclb;
     }
-    public function getIdubi(){
+    function getIdubi(){
         return $this->idubi;
     }
-    public function getAnoforclb(){
+    function getAnoforclb(){
         return $this->anoforclb;
     }
-    public function getCstmenusu(){
+    function getCstmenusu(){
         return $this->cstmenusu;
     }
-    public function getPreclb(){
+    function getPreclb(){
         return $this->preclb;
     }
     
-    public function setIdclb($idclb){
+    function setIdclb($idclb){
         $this->idclb = $idclb;
     }
-    public function setIdins($idins){
+    function setIdins($idins){
         $this->idins = $idins;
     }
-    public function setNomclb($nomclb){
+    function setNomclb($nomclb){
         $this->nomclb = $nomclb;
     }
-    public function setIdubi($idubi){
+    function setIdubi($idubi){
         $this->idubi = $idubi;
     }
-    public function setAnoforclb($anoforclb){
+    function setAnoforclb($anoforclb){
         $this->anoforclb = $anoforclb;
     }
-    public function setCstmenusu($cstmenusu){
+    function setCstmenusu($cstmenusu){
         $this->cstmenusu = $cstmenusu;
     }
-    public function setPreclb($preclb){
+    function setPreclb($preclb){
         $this->preclb = $preclb;
     }
 
@@ -56,7 +56,8 @@ class Mclb{
         $res = NULL;
         $modelo = new Conexion();
         $conexion = $modelo->get_conexion();
-        $sql = "SELECT * FROM club";
+        $sql = "SELECT cl.idclb, cl.nomclb, cl.anoforclb, cl.cstmenusu, cl.preclb, ins.idins, ins.idusu, ins.idpla, ins.fhins, ins.etdins, ins.durins, ub.idubi, ub.nomubi, ub.depubi 
+        FROM club AS cl INNER JOIN inscripcion AS ins ON cl.idins=ins.idins INNER JOIN ubicacion AS ub ON cl.idubi=ub.idubi";
         $result = $conexion->prepare($sql);
         $result->execute();
         $res = $result->fetchall(PDO::FETCH_ASSOC);
@@ -67,7 +68,8 @@ class Mclb{
         $res = NULL;
         $modelo = new Conexion();
         $conexion = $modelo->get_conexion();
-        $sql = "SELECT * FROM club WHERE idclub=:idclub";
+        $sql = "SELECT cl.idclb, cl.nomclb, cl.anoforclb, cl.cstmenusu, cl.preclb, ins.idins, ins.idusu, ins.idpla, ins.fhins, ins.etdins, ins.durins, ub.idubi, ub.nomubi, ub.depubi 
+        FROM club AS cl INNER JOIN inscripcion AS ins ON cl.idins=ins.idins INNER JOIN ubicacion AS ub ON cl.idubi=ub.idubi WHERE cl.idclb=:idclb";
         $result = $conexion->prepare($sql);
         $idclb = $this->getIdclb();
         $result->bindParam(":idclub", $idclub);

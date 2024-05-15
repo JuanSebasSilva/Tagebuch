@@ -70,7 +70,8 @@ class Meve{
         $res = NULL;
         $modelo = new Conexion();
         $conexion = $modelo->get_conexion();
-        $sql = "SELECT * FROM evento";
+        $sql = "SELECT ev.ideve, ev.nomeve, ev.deseve, ev.tpoeve, ev.dureve, ev.etdeve, ev.reseve, ev.fheve, ub.idubi, ub.nomubi, ub.depubi, v.idval, v.nomval 
+                FROM evento AS ev INNER JOIN ubicacion AS ub ON ev.idubi=ub.idubi INNER JOIN valor AS v ON ev.tpoeve=v.idval";
         $result = $conexion->prepare($sql);
         $result->execute();
         $res = $result->fetchall(PDO::FETCH_ASSOC);
@@ -81,7 +82,8 @@ class Meve{
         $res = NULL;
         $modelo = new Conexion();
         $conexion = $modelo->get_conexion();
-        $sql = "SELECT * FROM evento WHERE ideve=:ideve";
+        $sql = "SELECT ev.ideve, ev.nomeve, ev.deseve, ev.tpoeve, ev.dureve, ev.etdeve, ev.reseve, ev.fheve, ub.idubi, ub.nomubi, ub.depubi, v.idval, v.nomval 
+                FROM evento AS ev INNER JOIN ubicacion AS ub ON ev.idubi=ub.idubi INNER JOIN valor AS v ON ev.tpoeve=v.idval WHERE ev.ideve=:ideve";
         $result = $conexion->prepare($sql);
         $ideve = $this->getIdeve();
         $result->bindParam(":ideve", $ideve);
