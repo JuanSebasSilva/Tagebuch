@@ -56,7 +56,8 @@ class Mntcm{
         $res = NULL;
         $modelo = new Conexion();
         $conexion = $modelo->get_conexion();
-        $sql = "SELECT * FROM notcom";
+        $sql = "SELECT nc.idntcm, nc.fhpubntcm, nc.autntcm, nc.etdntcm, nc.printcm, nc.tpontcm, cl.idclb, cl.nomclb, cl.idubi, etv.idval AS etviv, etv.nomval AS etvnv, prv.idval AS prviv, prv.nomval AS prvnv, tpv.idval AS tpviv, tpv.nomval AS tpvnv 
+        FROM notcom AS nc INNER JOIN club AS cl ON nc.idclb=cl.idclb INNER JOIN valor AS etv ON nc.etdntcm=etv.idval INNER JOIN valor AS prv ON nc.printcm=prv.idval INNER JOIN valor AS tpv ON nc.tpontcm=tpv.idval";
         $result = $conexion->prepare($sql);
         $result->execute();
         $res = $result->fetchall(PDO::FETCH::ASSOC);
