@@ -39,7 +39,7 @@ class Mubi{
         $res = NULL;
         $modelo = new Conexion();
         $conexion = $modelo->get_conexion();
-        $sql = "SELECT * FROM ubicacion WHERE idubi=:idubi";
+        $sql = "SELECT dp.idubi AS cdp, dp.nomubi AS ndp, mu.idubi AS cmu, mu.nomubi AS nmu FROM ubicacion as mu LEFT JOIN ubicacion AS dp ON mu.depubi=dp.idubi WHERE dp.idubi=:idubi";
         $result = $conexion->prepare($sql);
         $idubi = $this->getIdubi();
         $result->bindParam(":idubi", $idubi);
