@@ -42,7 +42,7 @@ class Mval{
         $res = NULL;
         $modelo = new Conexion();
         $conexion = $modelo->get_conexion();
-        $sql = "SELECT * FROM valor";
+        $sql = "SELECT v.idval, v.nomval, v.parval, v.actval, d.iddom, d.nomdom FROM valor AS v INNER JOIN dominio AS d ON v.iddom=d.iddom";
         $result = $conexion->prepare($sql);
         $result->execute();
         $res = $result->fetchall(PDO::FETCH_ASSOC);
@@ -53,7 +53,7 @@ class Mval{
         $res = NULL;
         $modelo = new Conexion();
         $conexion = $modelo->get_conexion();
-        $sql = "SELECT * FROM valor WHERE idval=:idval";
+        $sql = "SELECT v.idval, v.nomval, v.parval, v.actval, d.iddom, d.nomdom FROM valor AS v INNER JOIN dominio AS d ON v.iddom=d.iddom WHERE v.idval=:idval";
         $result = $conexion->prepare($sql);
         $idval = $this->getIdval();
         $result->bindParam(":idval", $idval);
