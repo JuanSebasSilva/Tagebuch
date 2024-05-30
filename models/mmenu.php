@@ -13,7 +13,7 @@ class Mmenu{
         $res = NULL;
         $modelo = new Conexion();
         $conexion = $modelo->get_conexion();
-        $sql = "SELECT pg.idpag, pg.nompag, pg.rutpag, pg.mospag, pg.ordpag, pf.idper, pg.icopag FROM pagina AS pg INNER JOIN perfil AS pf ON pg.idpag=pf.idpag WHERE pf.idper=:idper";
+        $sql = "SELECT pg.idpag, pg.nompag, pg.rutpag, pg.mospag, pg.ordpag, pf.idper, pg.icopag FROM pagina AS pg INNER JOIN perfil AS pf ON pg.idpag=pf.pagini WHERE pf.idper=:idper";
         $result = $conexion->prepare($sql);
         $idper = isset($_SESSION['idper']) ? $_SESSION['idper']:0;
         $result->bindParam(":idper", $idper);
@@ -25,8 +25,9 @@ class Mmenu{
     public function getPagDf(){
         $res = NULL;
         $modelo = new Conexion();
-        $conexion = $model->get_conexion();
+        $conexion = $modelo->get_conexion();
         $sql = "SELECT idper, nomper, pagini FROM perfil WHERE idper=:idper";
+        $result = $conexion->prepare($sql);
         $idper = isset($_SESSION['idper']) ? $_SESSION['idper']:0;
         $result->bindParam(":idper", $idper);
         $result->execute();
@@ -37,8 +38,8 @@ class Mmenu{
     public function getVal(){
         $res = NULL;
         $modelo = new Conexion();
-        $conexion = $model->get_conexion();
-        $sql = "SELECT pg.idpag, pg.nompag, pg.rutpag, pg.mospag, pg.ordpag, pf.idper, pg.icopag FROM pagina AS pg INNER JOIN perfil AS pf ON pg.idpag=pf.idpag WHERE pf.idper=:idper AND pg.idpag=:idpag";
+        $conexion = $modelo->get_conexion();
+        $sql = "SELECT pg.idpag, pg.nompag, pg.rutpag, pg.mospag, pg.ordpag, pf.idper, pg.icopag FROM pagina AS pg INNER JOIN perfil AS pf ON pg.idpag=pf.pagini WHERE pf.idper=:idper AND pg.idpag=:idpag";
         $result = $conexion->prepare($sql);
         $idper = isset($_SESSION['idper']) ? $_SESSION['idper']:0;
         $result->bindParam(":idper", $idper);

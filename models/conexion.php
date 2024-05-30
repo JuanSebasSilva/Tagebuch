@@ -1,5 +1,5 @@
 <?php
-    class Conexion(){
+    class Conexion{
         public function get_conexion(){
             include("dates.php");
             $conexion = new PDO("mysql:host=$host;dbname=$db;", $user, $pass);
