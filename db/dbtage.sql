@@ -130,12 +130,12 @@ CREATE TABLE `notcom` (
 --
 
 CREATE TABLE `pagina` (
-  `idpag` int(2) NOT NULL COMMENT 'Codigo unico autoincrementable de  pagina',
-  `nompag` varchar(255) DEFAULT NULL,
-  `rutpag` varchar(255) DEFAULT NULL,
-  `mospag` tinyint(1) DEFAULT NULL,
-  `ordpag` int(5) DEFAULT NULL,
-  `icopag` varchar(255) DEFAULT NULL
+  `idpag` int(2) NOT NULL COMMENT 'Codigo unico de  pagina',
+  `nompag` varchar(255) DEFAULT NULL COMMENT 'Nombre de pagina',
+  `rutpag` varchar(255) DEFAULT NULL COMMENT 'Ruta de pagina',
+  `mospag` tinyint(1) DEFAULT NULL COMMENT 'Mostrar pagina',
+  `ordpag` int(5) DEFAULT NULL 'Orden pagina',
+  `icopag` varchar(255) DEFAULT NULL 'Icono pagina'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -156,9 +156,9 @@ CREATE TABLE `pagper` (
 --
 
 CREATE TABLE `perfil` (
-  `idper` bigint(10) NOT NULL COMMENT 'Codigo unico autoincrementable de perfil',
+  `idper` bigint(10) NOT NULL COMMENT 'Codigo unico de perfil',
   `nomper` varchar(50) DEFAULT NULL COMMENT 'Nombre de perfil',
-  `pagini` int(5) DEFAULT NULL
+  `pagini` int(5) DEFAULT NULL COMMENT 'Pagina inicial'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -239,8 +239,8 @@ CREATE TABLE `valor` (
   `idval` int(5) NOT NULL COMMENT 'Codigo unico autoincrementable del valor',
   `nomval` varchar(100) DEFAULT NULL COMMENT 'Nombre de valor',
   `iddom` int(3) DEFAULT NULL COMMENT 'Codigo de dominio',
-  `parval` varchar(255) DEFAULT NULL,
-  `actval` tinyint(1) DEFAULT NULL
+  `parval` varchar(255) DEFAULT NULL 'Parametro de valor',
+  `actval` tinyint(1) DEFAULT NULL 'Activo valor'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
