@@ -162,5 +162,15 @@ class Mtra{
         $result->bindParam(":idtrs", $idtrs);
         $result->execute();
     }
+
+    public function getEstt(){
+        $modelo = new Conexion();
+        $conexion = $modelo->get_conexion();
+        $sql = "SELECT idval, nomval FROM valor WHERE iddom=#";
+        $result = $conexion->prepare($sql);
+        $result->execute();
+        $res = $result->fetchall(PDO::FETCH_ASSOC);
+        return $res;
+    }
 }
 ?>

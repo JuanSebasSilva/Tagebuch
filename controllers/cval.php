@@ -1,5 +1,6 @@
 <?php
     include("models/mval.php");
+    include
 
     $idval = isset($_REQUEST['idval']) ? $_REQUEST['idval']:NULL;
     $nomval = isset($_POST['nomval']) ? $_POST['nomval']:NULL;
@@ -19,6 +20,10 @@
         else $mval->save();
     }
 
+    if($ope=="act" && $idval && $actval){
+        $mval->setActval($actval);
+        $mval->editAct();
+    }
     if($ope=="del" && $idval) $mval->del();
     if($ope=="edit" && $idval){
         $dtOne = $mval->getOne();
@@ -27,4 +32,5 @@
     }
 
     $dat = $mval->getAll();
+    $dtDom = $mdom->getAll();
 ?>

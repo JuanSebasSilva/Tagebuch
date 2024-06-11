@@ -118,5 +118,15 @@ class Mins{
         $result->bindParam("idins", $idins);
         $result->execute();
     }
+
+    public function getTipoi(){
+        $modelo = new Conexion();
+        $conexion = $modelo->get_conexion();
+        $sql = "SELECT idval, nomval FROM valor WHERE iddom=#";
+        $result = $conexion->prepare($sql);
+        $result->execute();
+        $res = $result->fetchall(PDO::FETCH_ASSOC);
+        return $res;
+    }
 }
 ?>

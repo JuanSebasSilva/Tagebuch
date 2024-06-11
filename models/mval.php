@@ -65,8 +65,10 @@ class Mval{
     public function save(){
         $modelo = new Conexion();
         $conexion = $modelo->get_conexion();
-        $sql = "INSERT INTO valor(nomval, iddom, parval, actval) VALUES(:nomval, :iddom, :parval, :actval)";
+        $sql = "INSERT INTO valor(idval, nomval, iddom, parval, actval) VALUES(:idval, :nomval, :iddom, :parval, :actval)";
         $result = $conexion->prepare($sql);
+        $idval = $this->getIdval();
+        $result->bindParam(":idval", $idval);
         $nomval = $this->getNomval();
         $result->bindParam(":nomval", $nomval);
         $iddom = $this->getIddom();
@@ -91,6 +93,18 @@ class Mval{
         $result->bindParam(":iddom", $iddom);
         $parval = $this->getParval();
         $result->bindParam(":parval", $parval);
+        $actval = $this->getActval();
+        $result->bindParam(":actval", $actval);
+        $result->execute();
+    }
+
+    public function editAct(){
+        $modelo = new Conexion();
+        $conexion = $modelo->get_conexion();
+        $sql = "UPDATE valor SET actval=:actval WHERE idval=:idval";
+        $result = $conexion->prepare($sql);
+        $idval = $this->getIdval();
+        $result->bindParam(":idval", $idval);
         $actval = $this->getActval();
         $result->bindParam(":actval", $actval);
         $result->execute();

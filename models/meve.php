@@ -151,5 +151,14 @@ class Meve{
         $result->bindParam(":ideve", $ideve);
         $result->execute();
     }
+
+    public function getTipoe(){
+        $modelo = new Conexion();
+        $conexion = $modelo->get_conexion();
+        $sql = "SELECT idval, nomval FROM valor WHERE iddom=#";
+        $result = $conexion->prepare($sql);
+        $res = $result->fetchall(PDO::FETCH_ASSOC);
+        return $res;
+    }
 }
 ?>
