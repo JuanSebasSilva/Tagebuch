@@ -52,17 +52,6 @@ body {
     margin: 0;
 }
 
-/* .menu {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 100;
-} */
-
 .logo {
     margin-top: -10px;
     color: #fffdfc;
@@ -72,42 +61,6 @@ body {
 .logo img {
     height: 50px;
 }
-
-/* .menu .navbar ul li {
-    position: relative;
-    float: left;
-}
-
-.menu .navbar ul li a {
-    font-size: 18px;
-    padding: 20px;
-    color: #fffdfc;
-    display: block;
-    font-weight: 600;
-}
-
-#menu {
-    display: none;
-}
-
-.menu-icono {
-    width: 25%;
-}
-
-.menu label {
-    cursor: pointer;
-    display: none;
-} 
-
-.links ul li a {
-    color: #ffffff;
-    font-size: 16px;
-    margin-right: 5px;
-}
-
-.links ul {
-    display: flex;
-}*/
 
 /*HOME*/
 
