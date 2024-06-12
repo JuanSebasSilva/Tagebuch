@@ -26,7 +26,7 @@
             <img src="img/logorecord.jpeg">
         </div>
     </header>
-    <div class="container menu">
+    <div class="container">
         <div class="wrapper">
             <form action="models/control.php" method="POST">
                 <h1>Iniciar Sesión</h1>

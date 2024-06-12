@@ -26,23 +26,31 @@
     <header class="header-menu">
         <?php
             include("views/header.php");
-            include("views/menu.php");
-            if(!$pg){
-                $pgdf = $mmenu->getPagDf();
-                if($pgdf) $pg = $pgdf[0]['pagini'];
-            }
         ?>
     </header>
 
     <div class="contenido">
-        <?php
-            $rut = validar($pg);
-            if($rut){
-                include($rut[0]['rutpag']);
-            }else{
-                echo "<h3>No cuentas con permisos de acceso</h3>";
-            }
-        ?>
+        <div class="row">
+            <div class="col-2" style="background: #fff">
+                <?php
+                    include("views/menu.php");
+                    if(!$pg){
+                        $pgdf = $mmenu->getPagDf();
+                        if($pgdf) $pg = $pgdf[0]['pagini'];
+                    }
+                ?>
+            </div>
+            <div class="col">
+                <?php
+                    $rut = validar($pg);
+                    if($rut){
+                        include($rut[0]['rutpag']);
+                    }else{
+                        echo "<h3>No cuentas con permisos de acceso</h3>";
+                    }
+                ?>
+            </div>
+        </div>
     </div>
     <footer class="footer">
         <?php include("views/footer.php"); ?>
