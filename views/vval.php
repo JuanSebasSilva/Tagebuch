@@ -11,7 +11,7 @@
                 <label for="iddom">Dominio</label>
                 <select name="iddom" id="iddom" class="form-select">
                     <?php if($dtDom){ foreach($dtDom as $dtD){?>
-                        <option vlaue="<?=$dtD['iddom'];?>" <?php if($dtOne && $dtD['iddom']==$dtOne[0]['iddom']) echo "selected";?>>
+                        <option value="<?=$dtD['iddom'];?>" <?php if($dtOne && $dtD['iddom']==$dtOne[0]['iddom']) echo "selected";?>>
                             <?=$dtD['nomdom'];?>
                         </option>
                     <?php }} ?>
