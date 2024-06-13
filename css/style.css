@@ -12,33 +12,22 @@
     padding: 0;
     text-decoration: none !important;
     list-style: none;
-    color: #000;
     font-family: "Poppins", sans-serif;
-}
-
-.img {
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    justify-items: center;
-    height: 30px;
 }
 
 a {
     text-transform: uppercase;
 }
 
-body {
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    min-height: 100vh;
-    background-color: #000 !important;
-}
-
 .container {
     margin: 0 auto;
     max-width: 1200px;
 }
+
+/* .menu{
+    background-color: #fff;
+    margin: 10px;
+} */
 
 .footer p {
     color: #FFF !important;

@@ -23,7 +23,7 @@
         include("models/conexion.php");
         $pg = isset($_REQUEST['pg']) ? $_REQUEST['pg']:NULL;
     ?>
-    <header class="header-menu">
+    <header class="row header-menu">
         <?php
             include("views/header.php");
         ?>
@@ -31,7 +31,7 @@
 
     <div class="contenido">
         <div class="row">
-            <div class="col-2" style="background: #fff">
+            <div class="col-1 menu" style="background: #fff">
                 <?php
                     include("views/menu.php");
                     if(!$pg){
