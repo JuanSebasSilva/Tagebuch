@@ -155,7 +155,7 @@ class Mntcm{
     public function getEstnc(){
         $modelo = new Conexion();
         $conexion = $modelo->get_conexion();
-        $sql = "SELECT idval, nomval FROM valor WHERE iddom=#";
+        $sql = "SELECT idval, nomval FROM valor WHERE iddom=8";
         $result = $conexion->prepare($sql);
         $result->execute();
         $res = $result->fetchall(PDO::FETCH_ASSOC);

@@ -129,16 +129,5 @@ class Mclb{
         $result->bindParam(":idclb", $idclb);
         $result->execute();
     }
-
-    /* public function getUbi(){
-        $res = NULL;
-        $modelo = new Conexion();
-        $conexion = $modelo->get_conexion();
-        $sql = "SELECT idubi, nomubi, depubi FROM ubicacion";
-        $result = $conexion->prepare($sql);
-        $result->execute();
-        $res = $result->fetchall(PDO::FETCH_ASSOC);
-        return $res;
-    } */
 }
 ?>
