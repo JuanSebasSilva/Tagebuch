@@ -35,4 +35,5 @@
     }
 
     $dat = $meve->getAll();
+    $datV = $meve->getTipoe();
 ?>
