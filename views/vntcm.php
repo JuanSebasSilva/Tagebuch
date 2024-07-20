@@ -1,4 +1,7 @@
-<?php include('controllers/cntcm.php'); ?>
+<?php 
+    include('controllers/cntcm.php');
+    echo title('', 'Noticias/Comunicados', 2);
+?>
 
 <div class="contx">
     <form name="frm1" method="POST" action="home.php?pg=<?=$pg;?>">

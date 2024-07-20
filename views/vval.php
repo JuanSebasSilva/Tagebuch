@@ -1,4 +1,7 @@
-<?php require_once("controllers/cval.php"); ?>
+<?php 
+    include('controllers/cval.php');
+    echo title('', 'Valores', 2);
+?>
 
 <div class="conte">
     <form id="frmins" action="home.php?pg=<?=$pg;?>" method="POST">

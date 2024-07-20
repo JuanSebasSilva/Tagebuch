@@ -1,4 +1,7 @@
-<?php require_once("controllers/cdom.php"); ?>
+<?php 
+    include('controllers/cdom.php');
+    echo title('', 'Dominios', 2);
+?>
 
 <div class="conte">
     <div class="inser">

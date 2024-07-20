@@ -79,3 +79,15 @@ function selUbi(dep){
         }
     });
 }
+
+function botonTitle(m=5){
+    if(m=1){
+        document.getElementById('contx').style.display = 'block';
+        document.getElementById('btnmas').style.display = 'none';
+        document.getElementById('btnmen').style.display = 'block';
+    }else if(m=2){
+        document.getElementById('contx').style.display = 'none';
+        document.getElementById('btnmas').style.display = 'block';
+        document.getElementById('btnmen').style.display = 'none';
+    }
+}

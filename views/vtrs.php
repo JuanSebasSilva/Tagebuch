@@ -1,4 +1,7 @@
-<?php include('controllers/ctrs.php'); ?>
+<?php 
+    include('controllers/ctrs.php');
+    echo title('', 'Trapasos', 2);
+?>
 
 <div class="contx">
     <form name="frm1" method="POST" action="home.php?pg=<?=$pg;?>">

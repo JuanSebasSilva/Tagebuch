@@ -1,4 +1,7 @@
-<?php include('controllers/cclb.php'); ?>
+<?php 
+    include('controllers/cclb.php');
+    echo title('', 'Clubes', 2);
+?>
 
 <div class="contx">
     <form name="frm1" method="POST" action="home.php?pg=<?=$pg;?>">

@@ -1,4 +1,7 @@
-<?php include("controllers/cper.php"); ?>
+<?php 
+    include('controllers/cper.php');
+    echo title('', 'Perfiles', 2);
+?>
 
 <div>
     <form method="POST" action="#" class="form-per">

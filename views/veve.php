@@ -1,4 +1,7 @@
-<?php include('controllers/ceve.php'); ?>
+<?php 
+    include('controllers/ceve.php');
+    echo title('', 'Eventos', 2);
+?>
 
 <div class="contx">
     <form name="frm1" method="POST" action="home.php?pg=<?=$pg;?>">
