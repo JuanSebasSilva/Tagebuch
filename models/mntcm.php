@@ -143,7 +143,7 @@ class Mntcm{
     public function getPrinc(){
         $modelo = new Conexion();
         $conexion = $modelo->get_conexion();
-        $sql = "SELECT idval, nomval FROM valor WHERE iddom=#";
+        $sql = "SELECT idval, nomval FROM valor WHERE iddom AND (3, 4)";
         $result = $conexion->prepare($sql);
         $result->execute();
         $res = $result->fetchall(PDO::FETCH_ASSOC);
@@ -153,7 +153,7 @@ class Mntcm{
     public function getTiponc(){
         $modelo = new Conexion();
         $conexion = $modelo->get_conexion();
-        $sql = "SELECT idval, nomval FROM valor WHERE iddom=#";
+        $sql = "SELECT idval, nomval FROM valor WHERE iddom=7";
         $result = $conexion->prepare($sql);
         $result->execute();
         $res = $result->fetchall(PDO::FETCH_ASSOC);
