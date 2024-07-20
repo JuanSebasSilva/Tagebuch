@@ -1,5 +1,10 @@
 <?php
     include("models/mclb.php");
+    include('models/mubi.php');
+
+    $mclb = new Mclb();
+    $mubi = new Mubi();
+    $datU = $mclb->getDep(0);
 
     $idclb = isset($_REQUEST['idclb']) ? $_REQUEST['idclb']:NULL;
     $idins = isset($_POST['idins']) ? $_POST['idins']:NULL;
@@ -8,9 +13,8 @@
     $anoforclb = isset($_POST['anoforclb']) ? $_POST['anoforclb']:NULL;
     $cstmenusu = isset($_POST['cstmenusu']) ? $_POST['cstmenusu']:NULL;
     $preclb = isset($_POST['preclb']) ? $_POST['preclb']:NULL;
-    $ope = isset($_REQUEST['ope'])  ? $_REQUEST['ope'];
+    $ope = isset($_REQUEST['ope'])  ? $_REQUEST['ope']:NULL;
 
-    $mclb = new Mclb();
     $mclb->setIdclb($idclb);
     if($ope=="save"){
         $mclb->setNomclb($nomclb);

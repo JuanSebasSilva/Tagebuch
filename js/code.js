@@ -65,3 +65,17 @@ function validar() {
         document.getElementById("error").innerHTML = "<div id='error'>Los datos son incorrectos</div>";
     }
 }
+
+function selUbi(dep){
+    var parametros = {
+        'valor' : dep
+    };
+    $.ajax({
+        data: parametros,
+        url: 'views/selmun.php',
+        type: 'POST',
+        success: function(response){
+            $('#reload').html(response);
+        }
+    });
+}

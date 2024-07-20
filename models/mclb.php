@@ -72,7 +72,7 @@ class Mclb{
         FROM club AS cl INNER JOIN inscripcion AS ins ON cl.idins=ins.idins INNER JOIN ubicacion AS ub ON cl.idubi=ub.idubi WHERE cl.idclb=:idclb";
         $result = $conexion->prepare($sql);
         $idclb = $this->getIdclb();
-        $result->bindParam(":idclub", $idclub);
+        $result->bindParam(":idclb", $idclb);
         $result->execute();
         $res = $result->fetchall(PDO::FETCH_ASSOC);
         return $res;
@@ -129,5 +129,16 @@ class Mclb{
         $result->bindParam(":idclb", $idclb);
         $result->execute();
     }
+
+    /* public function getUbi(){
+        $res = NULL;
+        $modelo = new Conexion();
+        $conexion = $modelo->get_conexion();
+        $sql = "SELECT idubi, nomubi, depubi FROM ubicacion";
+        $result = $conexion->prepare($sql);
+        $result->execute();
+        $res = $result->fetchall(PDO::FETCH_ASSOC);
+        return $res;
+    } */
 }
 ?>

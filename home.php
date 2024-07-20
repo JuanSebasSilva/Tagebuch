@@ -21,6 +21,7 @@
 <body>
     <?php
         include("models/conexion.php");
+        date_default_timezone_get('America/Bogota');
         $pg = isset($_REQUEST['pg']) ? $_REQUEST['pg']:NULL;
     ?>
     <header class="row header-menu">

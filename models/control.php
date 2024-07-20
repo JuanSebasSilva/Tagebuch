@@ -18,6 +18,8 @@
             $_SESSION['nomusu'] = $res[0]['nomusu'];
             $_SESSION['idper'] = $res[0]['idper'];
             $_SESSION['nomper'] = $res[0]['nomper'];
+            $_SESSION['idclb'] = $res[0]['idclb'];
+            $_SESSION['nomclb'] = $res[0]['nomclb'];
             $_SESSION['pagini'] = $res[0]['pagini'];
             $_SESSION['aut'] = 'qwe1534!"#;';
             echo "<script>window.location = '../home.php';</script>";

@@ -2,6 +2,8 @@
 class Mntcm{
     private $idntcm;
     private $idclb;
+    private $nomntcm;
+    private $desntcm;
     private $fhpubntcm;
     private $autntcm;
     private $etdntcm;
@@ -13,6 +15,12 @@ class Mntcm{
     }
     function getIdclb(){
         return $this->idclb;
+    }
+    function getNomntcm(){
+        return $this->nomntcm;
+    }
+    function getDesntcm(){
+        return $this->desntcm;
     }
     function getFhpubntcm(){
         return $this->fhpubntcm;
@@ -36,6 +44,12 @@ class Mntcm{
     function setIdclb($idclb){
         $this->idclb = $idclb;
     }
+    function setNomntcm($nomntcm){
+        $this->nomntcm = $nomntcm;
+    }
+    function setDesntcm($desntcm){
+        $this->desntcm = $desntcm;
+    }
     function setFhpubntcm($fhpubntcm){
         $this->fhpubntcm = $fhpubntcm;
     }
@@ -56,7 +70,7 @@ class Mntcm{
         $res = NULL;
         $modelo = new Conexion();
         $conexion = $modelo->get_conexion();
-        $sql = "SELECT nc.idntcm, nc.fhpubntcm, nc.autntcm, nc.etdntcm, nc.printcm, nc.tpontcm, cl.idclb, cl.nomclb, cl.idubi, etv.idval AS etviv, etv.nomval AS etvnv, prv.idval AS prviv, prv.nomval AS prvnv, tpv.idval AS tpviv, tpv.nomval AS tpvnv 
+        $sql = "SELECT nc.idntcm, nc.nomntcm, nc.desntcm, nc.fhpubntcm, nc.autntcm, nc.etdntcm, nc.printcm, nc.tpontcm, cl.idclb, cl.nomclb, cl.idubi, etv.idval AS etviv, etv.nomval AS etvnv, prv.idval AS prviv, prv.nomval AS prvnv, tpv.idval AS tpviv, tpv.nomval AS tpvnv 
         FROM notcom AS nc INNER JOIN club AS cl ON nc.idclb=cl.idclb INNER JOIN valor AS etv ON nc.etdntcm=etv.idval INNER JOIN valor AS prv ON nc.printcm=prv.idval INNER JOIN valor AS tpv ON nc.tpontcm=tpv.idval";
         $result = $conexion->prepare($sql);
         $result->execute();
@@ -68,7 +82,7 @@ class Mntcm{
         $res = NULL;
         $modelo = new Conexion();
         $conexion = $modelo->get_conexion();
-        $sql = "SELECT nc.idntcm, nc.fhpubntcm, nc.autntcm, nc.etdntcm, nc.printcm, nc.tpontcm, cl.idclb, cl.nomclb, cl.idubi, etv.idval AS etviv, etv.nomval AS etvnv, prv.idval AS prviv, prv.nomval AS prvnv, tpv.idval AS tpviv, tpv.nomval AS tpvnv 
+        $sql = "SELECT nc.idntcm, nc.nomntcm, nc.desntcm, nc.fhpubntcm, nc.autntcm, nc.etdntcm, nc.printcm, nc.tpontcm, cl.idclb, cl.nomclb, cl.idubi, etv.idval AS etviv, etv.nomval AS etvnv, prv.idval AS prviv, prv.nomval AS prvnv, tpv.idval AS tpviv, tpv.nomval AS tpvnv 
         FROM notcom AS nc INNER JOIN club AS cl ON nc.idclb=cl.idclb INNER JOIN valor AS etv ON nc.etdntcm=etv.idval INNER JOIN valor AS prv ON nc.printcm=prv.idval INNER JOIN valor AS tpv ON nc.tpontcm=tpv.idval WHERE nc.idntcm=:idntcm";
         $result = $conexion->prepare($sql);
         $idntcm = $this->getIdntcm();
@@ -81,10 +95,14 @@ class Mntcm{
     public function save(){
         $modelo = new Conexion();
         $conexion = $modelo->get_conexion();
-        $sql = "INSERT INTO notcom(idclb, fhpubntcm, autntcm, etdntcm, printcm, tpontcm) VALUES(:idclb, :fhpubntcm, :autntcm, :etdntcm, :printcm, :tpontcm)";
+        $sql = "INSERT INTO notcom(idclb, nomntcm, desntcm, fhpubntcm, autntcm, etdntcm, printcm, tpontcm) VALUES(:idclb, :nomntcm, :desntcm, :fhpubntcm, :autntcm, :etdntcm, :printcm, :tpontcm)";
         $result = $conexion->prepare($sql);
         $idclb = $this->getIdclb();
         $result->bindParam(":idclb", $idclb);
+        $nomntcm = $this->getNomntcm();
+        $result->bindParam(':nomntcm', $nomntcm);
+        $desntcm = $this->getDesntcm();
+        $result->bindParam(':desntcm', $desntcm);
         $fhpubntcm = $this->getFhpubntcm();
         $result->bindParam(":fhpubntcm", $fhpubntcm);
         $autntcm = $this->getAutntcm();
@@ -101,12 +119,16 @@ class Mntcm{
     public function edit(){
         $modelo = new Conexion();
         $conexion = $modelo->get_conexion();
-        $sql = "UPDATE notcom SET idclb=:idclb, fhpubntcm=:fhpubntcm, autntcm=:autntcm, etdntcm=:etdntcm, printcm=:printcm, tpontcm=:tpontcm WHERE idntcm=:idntcm";
+        $sql = "UPDATE notcom SET idclb=:idclb, nomntcm=:nomntcm, desntcm=:desntcm, fhpubntcm=:fhpubntcm, autntcm=:autntcm, etdntcm=:etdntcm, printcm=:printcm, tpontcm=:tpontcm WHERE idntcm=:idntcm";
         $result = $conexion->prepare($sql);
         $idntcm = $this->getIdntcm();
         $result->bindParam(":idntcm", $idntcm);
         $idclb = $this->getIdclb();
         $result->bindParam(":idclb", $idclb);
+        $nomntcm = $this->getNomntcm();
+        $result->bindParam(':nomntcm', $nomntcm);
+        $desntcm = $this->getDesntcm();
+        $result->bindParam(':desntcm', $desntcm);
         $fhpubntcm = $this->getFhpubntcm();
         $result->bindParam(":fhpubntcm", $fhpubntcm);
         $autntcm = $this->getAutntcm();

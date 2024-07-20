@@ -155,7 +155,7 @@ class Meve{
     public function getTipoe(){
         $modelo = new Conexion();
         $conexion = $modelo->get_conexion();
-        $sql = "SELECT idval, nomval FROM valor WHERE iddom=#";
+        $sql = "SELECT idval, nomval FROM valor WHERE iddom=9";
         $result = $conexion->prepare($sql);
         $res = $result->fetchall(PDO::FETCH_ASSOC);
         return $res;
