@@ -4,15 +4,13 @@
     $idusu = isset($_REQUEST['idusu']) ? $_REQUEST['idusu']:NULL;
     $idper = isset($_POST['idper']) ? $_POST['idper']:NULL;
     $nomusu = isset($_POST['nomusu']) ? $_POST['nomusu']:NULL;
-    $empusu = isset($_POST['empusu']) ? $_POST['empusu']:NULL;
     $emausu = isset($_POST['emausu']) ? $_POST['emausu']:NULL;
     $pasusu = isset($_POST['pasusu']) ? $_POST['pasusu']:NULL;
-    $nitusu = isset($_POST['nitusu']) ? $_POST['nitusu']:NULL;
+    $docusu = isset($_POST['docusu']) ? $_POST['docusu']:NULL;
     $fotusu = isset($_FILES['fotusu']) ? $_FILES['fotusu']:NULL;
-    $expusu = isset($_FILES['expusu']) ? $_FILES['expusu']:NULL;
+    $etdusu = isset($_FILES['etdusu']) ? $_FILES['etdusu']:NULL;
     $hisusu = isset($_POST['hisusu']) ? $_POST['hisusu']:NULL;
-    $salusu = isset($_POST['salusu']) ? $_POST['salusu']:NULL;
-    $tponit = isset($_POST['tponit']) ? $_POST['tponit']:NULL;
+    $tpodoc = isset($_POST['tpodoc']) ? $_POST['tpodoc']:NULL;
     $genusu = isset($_POST['genusu']) ? $_POST['genusu']:NULL;
     $fhnusu = isset($_POST['fhnusu']) ? $_POST['fhnusu']:NULL;
     $actusu = isset($_POST['actusu']) ? $_POST['actusu']:NULL;
@@ -24,16 +22,13 @@
     if($ope=="save"){
         $musu->setIdper($idper);
         $musu->setNomusu($nomusu);
-        $musu->setEmpusu($empusu);
         $musu->setEmausu($emausu);
         $musu->setPasusu($pasusu);
-        $musu->setNitusu($nitusu);
+        $musu->setDocusu($docusu);
         $musu->setFotusu($fotusu);
-        $musu->setExpusu($expusu);
-        $musu->setEdtusu($edtusu);
+        $musu->setEtdusu($etdusu);
         $musu->setHisusu($hisusu);
-        $musu->setSalusu($salusu);
-        $musu->setTponit($tponit);
+        $musu->setTpodoc($tpodoc);
         $musu->setGenusu($genusu);
         $musu->setFhnusu($fhnusu);
         $musu->setActusu($actusu);

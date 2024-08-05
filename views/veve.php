@@ -25,12 +25,12 @@
                 </select>
             </div>
             <div class="form-group col-md-6">
-                <label for="fheve">Fecha</label>
-                <input type="date" id="fheve" name="fheve" class="form-control" value="<?php if($dtOne) echo $dtOne[0]['fheve']; ?>" required>
+                <label for="fieve">Fecha inicio</label>
+                <input type="date" id="fieve" name="fieve" class="form-control" value="<?php if($dtOne) echo $dtOne[0]['fieve']; ?>" required>
             </div>
             <div class="form-group col-md-6">
-                <label for="dureve">Duracion</label>
-                <input type="number" id="dureve" name="dureve" class="form-control" value="<?php if($dtOne) echo $dtOne[0]['dureve']; ?>" required>
+                <label for="ffeve">Fecha fin</label>
+                <input type="date" id="ffeve" name="ffeve" class="form-control" value="<?php if($dtOne) echo $dtOne[0]['ffeve']; ?>" required>
             </div>
             <div class="form-group col-md-6">
                 <label for="etdeve">Estado</label>
@@ -58,7 +58,6 @@
             <th>Nombre</th>
             <th>Tipo</th>
             <th>Fecha</th>
-            <th>Duracion</th>
             <th>Estado</th>
             <th></th>
         </tr>
@@ -69,8 +68,7 @@
             <td><?=$dt['ideve'];?></td>
             <td><?=$dt['nomeve'];?></td>
             <td><?=$dt['tpoeve'];?></td>
-            <td><?=$dt['fheve'];?></td>
-            <td><?=$dt['dureve'];?></td>
+            <td><?=$dt['fieve'];?> <?=$dt['ffeve'];?></td>
             <td><?=$dt['etdeve'];?></td>
             <td>
                 <a href="home.php?pg=<?=$pg;?>&ideve=<?=$dt['ideve'];?>&ope=edit" title="Editar">

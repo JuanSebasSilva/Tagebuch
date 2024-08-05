@@ -7,21 +7,22 @@
     $datU = $mclb->getDep(0);
 
     $idclb = isset($_REQUEST['idclb']) ? $_REQUEST['idclb']:NULL;
-    $idins = isset($_POST['idins']) ? $_POST['idins']:NULL;
     $nomclb = isset($_POST['nomclb']) ? $_POST['nomclb']:NULL;
     $idubi = isset($_POST['idubi']) ? $_POST['idubi']:NULL;
-    $anoforclb = isset($_POST['anoforclb']) ? $_POST['anoforclb']:NULL;
-    $cstmenusu = isset($_POST['cstmenusu']) ? $_POST['cstmenusu']:NULL;
+    $afclb = isset($_POST['afclb']) ? $_POST['afclb']:NULL;
+    $cmclb = isset($_POST['cmclb']) ? $_POST['cmclb']:NULL;
     $preclb = isset($_POST['preclb']) ? $_POST['preclb']:NULL;
+    $desclb = isset($_POST['desclb']) ? $_POST['desclb']:NULL;
     $ope = isset($_REQUEST['ope'])  ? $_REQUEST['ope']:NULL;
 
     $mclb->setIdclb($idclb);
     if($ope=="save"){
         $mclb->setNomclb($nomclb);
         $mclb->setIdubi($idubi);
-        $mclb->setAnoforclb($anoforclb);
-        $mclb->setCstmenusu($cstmenusu);
+        $mclb->setAfclb($afclb);
+        $mclb->setCmclb($cmclb);
         $mclb->setPreclb($preclb);
+        $mclb->setDesclb($desclb);
         if($idclb) $mclb->edit();
         else $mclb->save();
     }

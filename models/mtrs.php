@@ -3,13 +3,14 @@ class Mtra{
     private $idtrs;
     private $idusu;
     private $idclb;
-    private $fictrtrs;
+    private $ficotrs;
     private $valtrs;
     private $bontrs;
     private $dettrs;
     private $etdtrs;
-    private $firclbtrs;
-    private $firusutrs;
+    private $frcltrs;
+    private $frustrs;
+    private $tmtrs;
 
     function getIdtrs(){
         return $this->idtrs;
@@ -20,8 +21,8 @@ class Mtra{
     function getIdclb(){
         return $this->idclb;
     }
-    function getFictrtrs(){
-        return $this->fictrtrs;
+    function getFicotrs(){
+        return $this->ficotrs;
     }
     function getValtrs(){
         return $this->valtrs;
@@ -35,11 +36,14 @@ class Mtra{
     function getEtdtrs(){
         return $this->etdtrs;
     }
-    function getFirclbtrs(){
-        return $this->firclbtrs;
+    function getFrcltrs(){
+        return $this->frcltrs;
     }
-    function getFirusutrs(){
-        return $this->firusutrs;
+    function getFrustrs(){
+        return $this->frustrs;
+    }
+    function getTmtrs(){
+        return $this->tmtrs;
     }
 
     function setIdtrs($idtrs){
@@ -51,8 +55,8 @@ class Mtra{
     function setIdclb($idclb){
         $this->idclb = $idclb;
     }
-    function setFictrtrs($fictrtrs){
-        $this->fictrtrs = $fictrtrs;
+    function setFicotrs($ficotrs){
+        $this->ficotrs = $ficotrs;
     }
     function setValtrs($valtrs){
         $this->valtrs = $valtrs;
@@ -66,18 +70,21 @@ class Mtra{
     function setEtdtrs($etdtrs){
         $this->etdtrs = $etdtrs;
     }
-    function setFirclbtrs($firclbtrs){
-        $this->firclbtrs = $firclbtrs;
+    function setFrcltrs($frcltrs){
+        $this->frcltrs = $frcltrs;
     }
-    function setFirusutrs($firusutrs){
-        $this->firusutrs = $firusutrs;
+    function setFrustrs($frustrs){
+        $this->frustrs = $frustrs;
+    }
+    function setTmtrs($tmtrs){
+        $this->tmtrs = $tmtrs;
     }
 
     public function getAll(){
         $res = NULL;
         $modelo = new Conexion();
         $conexion = $modelo->get_conexion();
-        $sql = "SELECT tr.idtrs, tr.fictrtrs, tr.valtrs, tr.bontrs, tr.dettrs, tr.etdtrs, tr.firclbtrs, tr.firusutrs, us.idusu, us.idper, us.nomusu, us.empusu, us.nitusu, us.fotusu, us.edtusu, us.hisusu, us.salusu, us.tponit, us.genusu, us.fhnusu, us.idubi, us.emausu, 
+        $sql = "SELECT tr.idtrs, tr.ficotrs, tr.valtrs, tr.bontrs, tr.dettrs, tr.etdtrs, tr.frcltrs, tr.frustrs, tr.tmtrs, us.idusu, us.idper, us.nomusu, us.empusu, us.nitusu, us.fotusu, us.edtusu, us.hisusu, us.salusu, us.tponit, us.genusu, us.fhnusu, us.idubi, us.emausu, 
         cl.idclb, cl.nomclb, cl.idubi, cl.preclb, etv.idval, etv.nomval FROM traspaso AS tr INNER JOIN usuario AS us ON tr.idusu=us.idusu INNER JOIN club AS cl ON tr.idclb=cl.idclb INNER JOIN valor AS etv ON tr.etdtrs=etv.idval";
         $result = $conexion->prepare($sql);
         $result->execute();
@@ -89,7 +96,7 @@ class Mtra{
         $res = NULL;
         $modelo = new Conexion();
         $conexion = $modelo->get_conexion();
-        $sql = "SELECT tr.idtrs, tr.fictrtrs, tr.valtrs, tr.bontrs, tr.dettrs, tr.etdtrs, tr.firclbtrs, tr.firusutrs, us.idusu, us.idper, us.nomusu, us.empusu, us.nitusu, us.fotusu, us.edtusu, us.hisusu, us.salusu, us.tponit, us.genusu, us.fhnusu, us.idubi, us.emausu, 
+        $sql = "SELECT tr.idtrs, tr.ficotrs, tr.valtrs, tr.bontrs, tr.dettrs, tr.etdtrs, tr.frcltrs, tr.frustrs, tr.tmtrs, us.idusu, us.idper, us.nomusu, us.empusu, us.nitusu, us.fotusu, us.edtusu, us.hisusu, us.salusu, us.tponit, us.genusu, us.fhnusu, us.idubi, us.emausu, 
         cl.idclb, cl.nomclb, cl.idubi, cl.preclb, etv.idval, etv.nomval FROM traspaso AS tr INNER JOIN usuario AS us ON tr.idusu=us.idusu INNER JOIN club AS cl ON tr.idclb=cl.idclb INNER JOIN valor AS etv ON tr.etdtrs=etv.idval WHERE tr.idtrs=:idtrs";
         $result = $conexion->prepare($sql);
         $idtrs = $this->getIdtrs();
@@ -102,14 +109,14 @@ class Mtra{
     public function save(){
         $modelo = new Conexion();
         $conexion = $modelo->get_conexion();
-        $sql = "INSERT INTO traspaso(idusu, idclb, fictrtrs, valtrs, bontrs, dettrs, etdtrs, firclbtrs, firusutrs) VALUES(:idusu, :idclb, :fictrtrs, :valtrs, :bontrs, :dettrs, :etdtrs, :firclbtrs, :firusutrs)";
+        $sql = "INSERT INTO traspaso(idusu, idclb, ficotrs, valtrs, bontrs, dettrs, etdtrs, frcltrs, frustrs, tmtrs) VALUES(:idusu, :idclb, :ficotrs, :valtrs, :bontrs, :dettrs, :etdtrs, :frcltrs, :frustrs, :tmtrs)";
         $result = $conexion->prepare($sql);
         $idusu = $this->getIdusu();
         $result->bindParam(":idusu", $idusu);
         $idclb = $this->getIdclb();
         $result->bindParam(":idclb", $idclb);
-        $fictrtrs = $this->getFictrtrs();
-        $result->bindParam(":fictrtrs", $fictrtrs);
+        $ficotrs = $this->getFicotrs();
+        $result->bindParam(":ficotrs", $ficotrs);
         $valtrs = $this->getValtrs();
         $result->bindParam(":valtrs", $valtrs);
         $bontrs = $this->getBontrs();
@@ -118,17 +125,19 @@ class Mtra{
         $result->bindParam(":dettrs", $dettrs);
         $etdtrs = $this->getEtdtrs();
         $result->bindParam(":etdtrs", $etdtrs);
-        $firclbtrs = $this->getFirclbtrs();
-        $result->bindParam(":firclbtrs", $firclbtrs);
-        $firusutrs = $this->getFirusutrs();
-        $result->bindParam(":firusutrs", $firusutrs);
+        $frcltrs = $this->getFrcltrs();
+        $result->bindParam(":frcltrs", $frcltrs);
+        $frustrs = $this->getFrustrs();
+        $result->bindParam(":frustrs", $frustrs);
+        $tmtrs = $this->getTmtrs();
+        $result->bindParam(":tmtrs", $tmtrs);
         $result->execute();
     }
 
     public function save(){
         $modelo = new Conexion();
         $conexion = $modelo->get_conexion();
-        $sql = "UPDATE traspaso SET idusu=:idusu, idclb=:idclb, fictrtrs=:fictrtrs, valtrs=:valtrs, bontrs=:bontrs, dettrs=:dettrs, etdtrs=:etdtrs, firclbtrs=:firclbtrs, firusutrs=:firusutrs WHERE idtrs=:idtrs";
+        $sql = "UPDATE traspaso SET idusu=:idusu, idclb=:idclb, ficotrs=:ficotrs, valtrs=:valtrs, bontrs=:bontrs, dettrs=:dettrs, etdtrs=:etdtrs, frcltrs=:frcltrs, frustrs=:frustrs, tmtrs=:tmtrs WHERE idtrs=:idtrs";
         $result = $conexion->prepare($sql);
         $idtrs = $this->getIdtrs();
         $result->bindParam(":idtrs", $idtrs);
@@ -136,8 +145,8 @@ class Mtra{
         $result->bindParam(":idusu", $idusu);
         $idclb = $this->getIdclb();
         $result->bindParam(":idclb", $idclb);
-        $fictrtrs = $this->getFictrtrs();
-        $result->bindParam(":fictrtrs", $fictrtrs);
+        $ficotrs = $this->getFicotrs();
+        $result->bindParam(":ficotrs", $ficotrs);
         $valtrs = $this->getValtrs();
         $result->bindParam(":valtrs", $valtrs);
         $bontrs = $this->getBontrs();
@@ -146,10 +155,12 @@ class Mtra{
         $result->bindParam(":dettrs", $dettrs);
         $etdtrs = $this->getEtdtrs();
         $result->bindParam(":etdtrs", $etdtrs);
-        $firclbtrs = $this->getFirclbtrs();
-        $result->bindParam(":firclbtrs", $firclbtrs);
-        $firusutrs = $this->getFirusutrs();
-        $result->bindParam(":firusutrs", $firusutrs);
+        $frcltrs = $this->getFrcltrs();
+        $result->bindParam(":frcltrs", $frcltrs);
+        $frustrs = $this->getFrustrs();
+        $result->bindParam(":frustrs", $frustrs);
+        $tmtrs = $this->getTmtrs();
+        $result->bindParam(":tmtrs", $tmtrs);
         $result->execute();
     }
 

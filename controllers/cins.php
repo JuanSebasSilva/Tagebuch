@@ -6,7 +6,7 @@
     $idpla = isset($_POST['idpla']) ? $_POST['idpla']:NULL;
     $fhins = isset($_POST['fhins']) ? $_POST['fhins']:NULL;
     $etdins = isset($_POST['etdins']) ? $_POST['etdins']:NULL;
-    $durins = isset($_POST['durins']) ? $_POST['durins']:NULL;
+    $idclb = isset($_POST['idclb']) ? $_POST['idclb']:NULL;
     $ope = isset($_REQUEST['ope']) ? $_REQUEST['ope']:NULL;
 
     $mins = new Mins();
@@ -16,7 +16,7 @@
         $mins->setIdpla($idpla);
         $mins->setFhins($fhins);
         $mins->setEtdins($etdins);
-        $mins->setDurins($durins);
+        $mins->setIdclb($idclb);
         if($idins) $mins->edit();
         else $mins->save();
     }

@@ -1,42 +1,42 @@
 <?php
-    include("models/mntcm.php");
+    include("models/mnc.php");
 
-    $idntcm = isset($_REQUEST['idntcm']) ? $_REQUEST['idntcm']:NULL;
+    $idnc = isset($_REQUEST['idnc']) ? $_REQUEST['idnc']:NULL;
     $idclb = isset($_POST['idclb']) ? $_POST['idclb']:NULL;
-    $nomntcm = isset($_POST['nomntcm']) ? $_POST['nomntcm']:NULL;
-    $desntcm = isset($_POST['desntcm']) ? $_POST['desntcm']:NULL;
+    $nomnc = isset($_POST['nomnc']) ? $_POST['nomnc']:NULL;
+    $desnc = isset($_POST['desnc']) ? $_POST['desnc']:NULL;
     $fecha = date('Y - m - d H : i : s');
-    $fhpubntcm = isset($_POST['fhpubntcm']) ? $_POST['fhpubntcm']:$fecha;
-    $autntcm = isset($_POST['autntcm']) ? $_POST['autntcm']:NULL;
-    $etdntcm = isset($_POST['etdntcm']) ? $_POST['etdntcm']:NULL;
-    $printcm = isset($_POST['printcm']) ? $_POST['printcm']:NULL;
-    $tpontcm = isset($_POST['tpontcm']) ? $_POST['tpontcm']:NULL;
+    $fhpnc = isset($_POST['fhpnc']) ? $_POST['fhpnc']:$fecha;
+    $autnc = isset($_POST['autnc']) ? $_POST['autnc']:NULL;
+    $etdnc = isset($_POST['etdnc']) ? $_POST['etdnc']:NULL;
+    $princ = isset($_POST['princ']) ? $_POST['princ']:NULL;
+    $tponc = isset($_POST['tponc']) ? $_POST['tponc']:NULL;
     $ope = isset($_REQUEST['ope']) ? $_REQUEST['ope']:NULL;
 
-    $mntcm = new Mntcm();
-    $mntcm->setIdntcm($idntcm);
+    $mnc = new mnc();
+    $mnc->setIdnc($idnc);
     if($ope=="save"){
-        $mntcm->setIdclb($idclb);
-        $mntcm->setNomntcm($nomntcm);
-        $mntcm->setDesntcm($desntcm);
-        $mntcm->setFhpubntcm($fhpubntcm);
-        $mntcm->setAutntcm($autntcm);
-        $mntcm->setEtdntcm($etdntcm);
-        $mntcm->setPrintcm($printcm);
-        $mntcm->setTpontcm($tpontcm);
-        if($idntcm) $mntcm->edit();
-        else $mntcm->save();
+        $mnc->setIdclb($idclb);
+        $mnc->setNomnc($nomnc);
+        $mnc->setDesnc($desnc);
+        $mnc->setFhpnc($fhpnc);
+        $mnc->setAutnc($autnc);
+        $mnc->setEtdnc($etdnc);
+        $mnc->setPrinc($princ);
+        $mnc->setTponc($tponc);
+        if($idnc) $mnc->edit();
+        else $mnc->save();
     }
 
-    if($ope=="del" && $idntcm) $mntcm->del();
-    if($ope=="edit" && $idntcm){
-        $dtOne = $mntcm->getOne();
+    if($ope=="del" && $idnc) $mnc->del();
+    if($ope=="edit" && $idnc){
+        $dtOne = $mnc->getOne();
     }else{
         $dtOne = NULL;
     }
 
-    $dat = $mntcm->getAll();
-    $datEtd = $mntcm->getEstnc();
-    $datPri = $mntcm->getPrinc();
-    $datTpo = $mntcm->getTiponc();
+    $dat = $mnc->getAll();
+    $datEtd = $mnc->getEstnc();
+    $datPri = $mnc->getPrinc();
+    $datTpo = $mnc->getTiponc();
 ?>

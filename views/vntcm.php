@@ -7,49 +7,49 @@
     <form name="frm1" method="POST" action="home.php?pg=<?=$pg;?>">
         <div class="row">
             <div class="form-group col-md-6">
-                <label for="nomntcm">Nombre</label>
-                <input type="text" id="nomntcm" name="nomntcm" class="form-control" value="<?php if($dtOne) echo $dtOne[0]['nomntcm']; ?>" required>
+                <label for="nomnc">Nombre</label>
+                <input type="text" id="nomnc" name="nomnc" class="form-control" value="<?php if($dtOne) echo $dtOne[0]['nomnc']; ?>" required>
             </div>
             <div class="form-group col-md-6">
-                <label for="desntcm">Descripcion</label>
-                <input type="text" id="desntcm" name="desntcm" class="form-control" value="<?php if($dtOne) echo $dtOne[0]['desntcm']; ?>" required>
+                <label for="desnc">Descripcion</label>
+                <input type="text" id="desnc" name="desnc" class="form-control" value="<?php if($dtOne) echo $dtOne[0]['desnc']; ?>" required>
             </div>
             <div class="form-group col-md-6">
-                <label for="autntcm">Autor</label>
-                <input type="number" id="autntcm" name="autntcm" class="form-control" value="<?php if($dtOne) echo $dtOne[0]['autntcm']; ?>" required>
+                <label for="autnc">Autor</label>
+                <input type="number" id="autnc" name="autnc" class="form-control" value="<?php if($dtOne) echo $dtOne[0]['autnc']; ?>" required>
             </div>
             <div class="form-group col-md-6">
-                <label for="tpontcm">Tipo</label>
-                <select id="tpontcm" name="tpontcm" class="form-control form-select">
+                <label for="tponc">Tipo</label>
+                <select id="tponc" name="tponc" class="form-control form-select">
                     <?php if($datTpo){ foreach($datTpo as $dtt){ ?>
-                        <option value="<?=$dtt['idval'];?>" <?php if($dtOne && $dtOne[0]['tpontcm']==$dtt[0]['idval']) echo 'selected'?> required>
+                        <option value="<?=$dtt['idval'];?>" <?php if($dtOne && $dtOne[0]['tponc']==$dtt[0]['idval']) echo 'selected'?> required>
                             <?=$dtt['nomval']?>
                         </option>
                     <?php }} ?>
                 </select>
             </div>
             <div class="form-group col-md-6">
-                <label for="printcm">Prioridad</label>
-                <select id="printcm" name="printcm" class="form-control form-select">
+                <label for="princ">Prioridad</label>
+                <select id="princ" name="princ" class="form-control form-select">
                     <?php if($datPri){ foreach($datPri as $dtp){ ?>
-                        <option value="<?=$dtp['idval'];?>" <?php if($dtOne && $dtOne[0]['printcm']==$dtp[0]['idval']) echo 'selected'?> required>
+                        <option value="<?=$dtp['idval'];?>" <?php if($dtOne && $dtOne[0]['princ']==$dtp[0]['idval']) echo 'selected'?> required>
                             <?=$dtp['nomval']?>
                         </option>
                     <?php }} ?>
                 </select>
             </div>
             <div class="form-group col-md-6">
-                <label for="etdntcm">Estado</label>
-                <select id="etdntcm" name="etdntcm" class="form-control form-select">
+                <label for="etdnc">Estado</label>
+                <select id="etdnc" name="etdnc" class="form-control form-select">
                     <?php if($datEtd){ foreach($datEtd as $dte){ ?>
-                        <option value="<?=$dte['idval'];?>" <?php if($dtOne && $dtOne[0]['etdntcm']==$dte[0]['idval']) echo 'selected'?> required>
+                        <option value="<?=$dte['idval'];?>" <?php if($dtOne && $dtOne[0]['etdnc']==$dte[0]['idval']) echo 'selected'?> required>
                             <?=$dte['nomval']?>
                         </option>
                     <?php }} ?>
                 </select>
             </div>
             <div class="form-group col-md-6">
-                <input type="hidden" id="idntcm" name="idntcm" value="<?php if($dtOne) echo $dtOne[0]['idntcm']; ?>">
+                <input type="hidden" id="idnc" name="idnc" value="<?php if($dtOne) echo $dtOne[0]['idnc']; ?>">
                 <input type="hidden" name="ope" value="save">
                 <input type="submit" class="btn" value="Enviar">
             </div>
@@ -72,17 +72,17 @@
     <tbody>
         <?php if($dat){ foreach($dat as $dt){ ?>
         <tr>
-            <td><?=$dt['idntcm'];?></td>
-            <td><?=$dt['nomntcm'];?></td>
-            <td><?=$dt['autntcm'];?></td>
-            <td><?=$dt['tpontcm'];?></td>
-            <td><?=$dt['printcm'];?></td>
-            <td><?=$dt['etdntcm'];?></td>
+            <td><?=$dt['idnc'];?></td>
+            <td><?=$dt['nomnc'];?></td>
+            <td><?=$dt['autnc'];?></td>
+            <td><?=$dt['tponc'];?></td>
+            <td><?=$dt['princ'];?></td>
+            <td><?=$dt['etdnc'];?></td>
             <td>
-                <a href="home.php?pg=<?=$pg;?>&idntcm=<?=$dt['idntcm'];?>&ope=edit" title="Editar">
+                <a href="home.php?pg=<?=$pg;?>&idnc=<?=$dt['idnc'];?>&ope=edit" title="Editar">
                     <i class="fa-solid fa-pen-to-square"></i>
                 </a>
-                <a href="home.php?pg=<?=$pg;?>&idntcm=<?=$dt['idntcm'];?>&ope=del" title="Eliminar">
+                <a href="home.php?pg=<?=$pg;?>&idnc=<?=$dt['idnc'];?>&ope=del" title="Eliminar">
                     <i class="fa-solid fa-trash"></i>
                 </a>
             </td>
@@ -98,7 +98,7 @@
     </nav>
     <div class="addnoti">
         <center>
-            <i class="fa-solid fa-list-check" data-bs-toggle="modal" data-bs-target="#MdPg<?=$dt['idntcm'];?>">Agregar noticias</i>
+            <i class="fa-solid fa-list-check" data-bs-toggle="modal" data-bs-target="#MdPg<?=$dt['idnc'];?>">Agregar noticias</i>
         </center> 
     </div>
     <article class="noticerra">
@@ -106,7 +106,7 @@
     </article>
 </section>
 
-<div class="modal fade" id="MdPg<?=$dt['idntcm'];?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="MdPg<?=$dt['idnc'];?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body">

@@ -19,12 +19,12 @@
                 <input type="text" id="preclb" name="preclb" class="form-control" value="<?php if($dtOne) echo $dtOne[0]['preclb']; ?>" required>
             </div>
             <div class="form-group col-md-6">
-                <label for="anoforclb">Año de formacion</label>
-                <input type="date" id="anoforclb" name="anoforclb" class="form-control" value="<?php if($dtOne) echo $dtOne[0]['anoforclb']; ?>" required>
+                <label for="afclb">Año de formacion</label>
+                <input type="date" id="afclb" name="afclb" class="form-control" value="<?php if($dtOne) echo $dtOne[0]['afclb']; ?>" required>
             </div>
             <div class="form-group col-md-6">
-                <label for="cstmenusu">Costo mensualidad</label>
-                <input type="number" id="cstmenusu" name="cstmenusu" class="form-control" value="<?php if($dtOne) echo $dtOne[0]['cstmenusu']; ?>" required>
+                <label for="cmclb">Costo mensualidad</label>
+                <input type="number" id="cmclb" name="cmclb" class="form-control" value="<?php if($dtOne) echo $dtOne[0]['cmclb']; ?>" required>
             </div>
             <div class="form-group col-md-6">
                 <label for="dep">Ubicacion</label>
@@ -72,7 +72,7 @@
             <td><?=$dt['nomclb'];?></td>
             <td><?=$dt['desclb'];?></td>
             <td><?=$dt['preclb'];?></td>
-            <td><?=$dt['cstmenusu'];?></td>
+            <td><?=$dt['cmclb'];?></td>
             <td>
                 <a href="home.php?pg=<?=$pg;?>&idclb=<?=$dt['idclb'];?>&ope=edit" title="Editar">
                     <i class="fa-solid fa-pen-to-square"></i>

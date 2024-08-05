@@ -5,7 +5,7 @@ class Mins{
     private $idpla;
     private $fhins;
     private $etdins;
-    private $durins;
+    private $idclb;
 
     function getIdins(){
         return $this->idins;
@@ -22,8 +22,8 @@ class Mins{
     function getEtdins(){
         return $this->etdins;
     }
-    function getDurins(){
-        return $this->durins;
+    function getIdclb(){
+        return $this->idclb;
     }
 
     function setIdins($idins){
@@ -41,16 +41,17 @@ class Mins{
     function setEtdins($etdins){
         $this->etdins = $etdins;
     }
-    function setDurins($durins){
-        $this->durins = $durins;
+    function setIdclb($idclb){
+        $this->idclb = $idclb;
     }
 
     public function getAll(){
         $res = NULL;
         $modelo = new Conexion();
         $conexion = $modelo->get_conexion();
-        $sql = "SELECT ins.idins, ins.fhins, ins.etdins, ins.durins, us.idusu, us.idper, us.nomusu, us.empusu, us.emausu, us.nitusu, us.fotusu, us.expusu, us.hisusu, us.salusu, us.tponit, 
-        us.genusu, us.fhnusu, us.idubi, pl.idpla, pl.idclb FROM inscripcion AS ins INNER JOIN usuario AS us ON ins.idusu=us.idusu INNER JOIN plantilla AS pl ON ins.idpla=pl.idpla";
+        $sql = "SELECT ins.idins, ins.fhins, ins.etdins, us.idusu, us.idper, us.nomusu, us.empusu, us.emausu, us.nitusu, us.fotusu, us.expusu, us.hisusu, us.salusu, us.tponit, 
+        us.genusu, us.fhnusu, us.idubi, pl.idpla, cl.idclb, cl.nomclb FROM inscripcion AS ins INNER JOIN usuario AS us ON ins.idusu=us.idusu INNER JOIN plantilla AS pl 
+        ON ins.idpla=pl.idpla INNER JOIN club AS cl ON ins.idclb=cl.idclb";
         $result = $conexion->prepare($sql);
         $result->execute();
         $res = $result->fetchall(PDO::FETCH_ASSOC);
@@ -61,8 +62,9 @@ class Mins{
         $res = NULL;
         $modelo = new Conexion();
         $conexion = $modelo->get_conexion();
-        $sql = "SELECT ins.idins, ins.fhins, ins.etdins, ins.durins, us.idusu, us.idper, us.nomusu, us.empusu, us.emausu, us.nitusu, us.fotusu, us.expusu, us.hisusu, us.salusu, us.tponit, 
-        us.genusu, us.fhnusu, us.idubi, pl.idpla, pl.idclb FROM inscripcion AS ins INNER JOIN usuario AS us ON ins.idusu=us.idusu INNER JOIN plantilla AS pl ON ins.idpla=pl.idpla WHERE ins.idins=:idins";
+        $sql = "SELECT ins.idins, ins.fhins, ins.etdins, us.idusu, us.idper, us.nomusu, us.empusu, us.emausu, us.nitusu, us.fotusu, us.expusu, us.hisusu, us.salusu, us.tponit, 
+        us.genusu, us.fhnusu, us.idubi, pl.idpla, cl.idclb, cl.nomclb FROM inscripcion AS ins INNER JOIN usuario AS us ON ins.idusu=us.idusu INNER JOIN plantilla AS pl 
+        ON ins.idpla=pl.idpla INNER JOIN club AS cl ON ins.idclb=cl.idclb WHERE ins.idins=:idins";
         $result = $conexion->prepare($sql);
         $idins = $this->getIdins();
         $result->bindParam(":idins", $idins);
@@ -74,7 +76,7 @@ class Mins{
     public function save(){
         $modelo = new Conexion();
         $conexion = $modelo->get_conexion();
-        $sql = "INSERT INTO inscripcion(idusu, idpla, fhins, etdins, durins) VALUES(:idusu, :idpla, :fhins, :etdins, :durins)";
+        $sql = "INSERT INTO inscripcion(idusu, idpla, fhins, etdins, idclb) VALUES(:idusu, :idpla, :fhins, :etdins, :idclb)";
         $result = $conexion->prepare($sql);
         $idusu = $this->getIdusu();
         $result->bindParam(":idusu", $idusu);
@@ -84,15 +86,15 @@ class Mins{
         $result->bindParam(":fhins", $fhins);
         $etdins = $this->getEtdins();
         $result->bindParam(":etdins", $etdins);
-        $durins = $this->getDurins();
-        $result->bindParam(":durins", $durins);
+        $idclb = $this->getIdclb();
+        $result->bindParam(":idclb", $idclb);
         $result->execute();
     }
 
     public function edit(){
         $modelo = new Conexion();
         $conexion = $modelo->get_conexion();
-        $sql = "UPDATE inscripcion SET idusu=:idusu,, idpla=:idpla,, fhins=:fhins,, etdins=:etdins, durins=:durins WHERE idins=:idins";
+        $sql = "UPDATE inscripcion SET idusu=:idusu,, idpla=:idpla,, fhins=:fhins,, etdins=:etdins, idclb=:idclb WHERE idins=:idins";
         $result = $conexion->prepare($sql);
         $idins =  $this->getIdins();
         $result->bindParam(":idins", $idins);
@@ -104,8 +106,8 @@ class Mins{
         $result->bindParam(":fhins", $fhins);
         $etdins = $this->getEtdins();
         $result->bindParam(":etdins", $etdins);
-        $durins = $this->getDurins();
-        $result->bindParam(":durins", $durins);
+        $idclb = $this->getIdclb();
+        $result->bindParam(":idclb", $idclb);
         $result->execute();
     }
 

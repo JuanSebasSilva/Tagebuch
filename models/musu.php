@@ -3,15 +3,14 @@ class Musu{
     private $idusu;
     private $idper;
     private $nomusu;
-    private $empusu;
+    private $apeusu;
     private $emausu;
     private $pasusu;
-    private $nitusu;
+    private $docusu;
     private $fotusu;
-    private $expusu;
+    private $etdusu;
     private $hisusu;
-    private $salusu;
-    private $tponit;
+    private $tpodoc;
     private $genusu;
     private $fhnusu;
     private $actusu;
@@ -26,8 +25,8 @@ class Musu{
     function getNomusu(){
         return $this->nomusu;
     }
-    function getEmpusu(){
-        return $this->empusu;
+    function getApeusu(){
+        return $this->apeusu;
     }
     function getEmausu(){
         return $this->emausu;
@@ -35,23 +34,20 @@ class Musu{
     function getPasusu(){
         return $this->pasusu;
     }
-    function getNitusu(){
-        return $this->nitusu;
+    function getDocusu(){
+        return $this->docusu;
     }
     function getFotusu(){
         return $this->fotusu;
     }
-    function getExpusu(){
-        return $this->expusu;
+    function getEtdusu(){
+        return $this->etdusu;
     }
     function getHisusu(){
         return $this->hisusu;
     }
-    function getSalusu(){
-        return $this->salusu;
-    }
-    function getTponit(){
-        return $this->tponit;
+    function getTpodoc(){
+        return $this->tpodoc;
     }
     function getGenusu(){
         return $this->genusu;
@@ -75,8 +71,8 @@ class Musu{
     function setNomusu($nomusu){
         $this->nomusu = $nomusu;
     }
-    function setEmpusu($empusu){
-        $this->empusu = $empusu;
+    function setApeusu($apeusu){
+        $this->apeusu = $apeusu;
     }
     function setEmausu($emausu){
         $this->emausu = $emausu;
@@ -84,23 +80,20 @@ class Musu{
     function setPasusu($pasusu){
         $this->pasusu = $pasusu;
     }
-    function setNitusu($nitusu){
-        $this->nitusu = $nitusu;
+    function setDocusu($docusu){
+        $this->docusu = $docusu;
     }
     function setFotusu($fotusu){
         $this->fotusu = $fotusu;
     }
-    function setExpusu($expusu){
-        $this->expusu = $expusu;
+    function setEtdusu($etdusu){
+        $this->etdusu = $etdusu;
     }
     function setHisusu($hisusu){
         $this->hisusu = $hisusu;
     }
-    function setSalusu($salusu){
-        $this->salusu = $salusu;
-    }
-    function setTponit($tponit){
-        $this->tponit = $tponit;
+    function setTpodoc($tpodoc){
+        $this->tpodoc = $tpodoc;
     }
     function setGenusu($genusu){
         $this->genusu = $genusu;
@@ -119,8 +112,8 @@ class Musu{
         $res = NULL;
         $modelo = new Conexion();
         $conexion = $modelo->get_conexion();
-        $sql = "SELECT us.idusu, us.nomusu, us.empusu, us.pasusu, us.nitusu, us.fotusu, us.expusu, us.edtusu, us.hisusu, us.salusu, us.tponit, us.genusu, us.fhnusu, us.actusu, us.emausu, pf.idper, pf.nomper, pf.pagini, tpv.idval AS tpiv, tpv.nomval AS tpnv, gnv.idval AS gniv, gnv.nomval AS gnnv, ub.idubi, ub.nomubi, ub.depubi 
-        FROM usuario AS us INNER JOIN perfil AS pf ON us.idper=pf.idper INNER JOIN valor AS tpv ON us.tponit=tpv.idval INNER JOIN valor AS gnv ON us.genusu=gnv.idval INNER JOIN ubicacion AS ub ON us.idubi=ub.idubi";
+        $sql = "SELECT us.idusu, us.nomusu, us.apeusu, us.pasusu, us.docusu, us.fotusu, us.etdusu, us.hisusu, us.tpodoc, us.genusu, us.fhnusu, us.actusu, us.emausu, pf.idper, pf.nomper, pf.pagini, tpv.idval AS tpiv, tpv.nomval AS tpnv, gnv.idval AS gniv, gnv.nomval AS gnnv, ub.idubi, ub.nomubi, ub.depubi 
+        FROM usuario AS us INNER JOIN perfil AS pf ON us.idper=pf.idper INNER JOIN valor AS tpv ON us.tpodoc=tpv.idval INNER JOIN valor AS gnv ON us.genusu=gnv.idval INNER JOIN ubicacion AS ub ON us.idubi=ub.idubi";
         $result = $conexion->prepare($sql);
         $result->execute();
         $res = $result->fetchall(PDO::FETCH_ASSOC);
@@ -131,8 +124,8 @@ class Musu{
         $res = NULL;
         $modelo = new Conexion();
         $conexion = $modelo->get_conexion();
-        $sql = "SELECT us.idusu, us.nomusu, us.empusu, us.pasusu, us.nitusu, us.fotusu, us.expusu, us.edtusu, us.hisusu, us.salusu, us.tponit, us.genusu, us.fhnusu, us.actusu, us.emausu, pf.idper, pf.nomper, pf.pagini, tpv.idval AS tpiv, tpv.nomval AS tpnv, gnv.idval AS gniv, gnv.nomval AS gnnv, ub.idubi, ub.nomubi, ub.depubi 
-        FROM usuario AS us INNER JOIN perfil AS pf ON us.idper=pf.idper INNER JOIN valor AS tpv ON us.tponit=tpv.idval INNER JOIN valor AS gnv ON us.genusu=gnv.idval INNER JOIN ubicacion AS ub ON us.idubi=ub.idubi WHERE us.idusu=:idusu";
+        $sql = "SELECT us.idusu, us.nomusu, us.apeusu, us.pasusu, us.docusu, us.fotusu, us.etdusu, us.hisusu, us.tpodoc, us.genusu, us.fhnusu, us.actusu, us.emausu, pf.idper, pf.nomper, pf.pagini, tpv.idval AS tpiv, tpv.nomval AS tpnv, gnv.idval AS gniv, gnv.nomval AS gnnv, ub.idubi, ub.nomubi, ub.depubi 
+        FROM usuario AS us INNER JOIN perfil AS pf ON us.idper=pf.idper INNER JOIN valor AS tpv ON us.tpodoc=tpv.idval INNER JOIN valor AS gnv ON us.genusu=gnv.idval INNER JOIN ubicacion AS ub ON us.idubi=ub.idubi WHERE us.idusu=:idusu";
         $result = $conexion->prepare($sql);
         $idusu = $this->getIdusu();
         $result->bindParam(":idusu", $idusu);
@@ -144,30 +137,28 @@ class Musu{
     public function save(){
         $modelo = new Conexion();
         $conexion = $modelo->get_conexion();
-        $sql = "INSERT INTO usuario(idper, nomusu, empusu, emausu, pasusu, nitusu, fotusu, expusu,hisusu, salusu, tponit, genusu, fhnusu, actusu, idubi) VALUES(:idper, :nomusu, :empusu, :emausu, :pasusu, :nitusu, :fotusu, :expusu,:hisusu, :salusu, :tponit, :genusu, :fhnusu, :actusu, :idubi)";
+        $sql = "INSERT INTO usuario(idper, nomusu, apeusu, emausu, pasusu, docusu, fotusu, etdusu, hisusu, tpodoc, genusu, fhnusu, actusu, idubi) VALUES(:idper, :nomusu, :apeusu, :emausu, :pasusu, :docusu, :fotusu, :etdusu, :hisusu, :tpodoc, :genusu, :fhnusu, :actusu, :idubi)";
         $result = $conexion->prepare($sql);
         $idper = $this->getIdper();
         $result->bindParam(":idper", $idper);
         $nomusu = $this->getNomusu();
         $result->bindParam(":nomusu", $nomusu);
-        $empusu = $this->getEmpusu();
-        $result->bindParam(":empusu", $empusu);
+        $apeusu = $this->getApeusu();
+        $result->bindParam(":apeusu", $apeusu);
         $emausu = $this->getEmausu();
         $result->bindParam(":emausu", $emausu);
         $pasusu = $this->getPasusu();
         $result->bindParam(":pasusu", $pasusu);
-        $nitusu = $this->getNitusu();
-        $result->bindParam(":nitusu", $nitusu);
+        $docusu = $this->getDocusu();
+        $result->bindParam(":docusu", $docusu);
         $fotusu = $this->getFotusu();
         $result->bindParam(":fotusu", $fotusu);
-        $expusu = $this->getExpusu();
-        $result->bindParam(":expusu", $expusu);
+        $etdusu = $this->getEtdusu();
+        $result->bindParam(":etdusu", $etdusu);
         $hisusu = $this->getHisusu();
         $result->bindParam(":hisusu", $hisusu);
-        $salusu = $this->getSalusu();
-        $result->bindParam(":salusu", $salusu);
-        $tponit = $this->getTponit();
-        $result->bindParam(":tponit", $tponit);
+        $tpodoc = $this->getTpodoc();
+        $result->bindParam(":tpodoc", $tpodoc);
         $genusu = $this->getGenusu();
         $result->bindParam(":genusu", $genusu);
         $fhnusu = $this->getFhnusu();
@@ -182,7 +173,7 @@ class Musu{
     public function edit(){
         $modelo = new Conexion();
         $conexion = $modelo->get_conexion();
-        $sql = "UPDATE usuario SET idper=:idper, nomusu=:nomusu, empusu=:empusu, emausu=:emausu, pasusu=:pasusu, nitusu=:nitusu, fotusu=:fotusu, expusu=:expusu, hisusu=:hisusu, salusu=:salusu, tponit=:tponit, genusu=:genusu, fhnusu=:fhnusu, actusu=:actusu, idubi=:idubi WHERE idusu=:idusu";
+        $sql = "UPDATE usuario SET idper=:idper, nomusu=:nomusu, apeusu=:apeusu, emausu=:emausu, pasusu=:pasusu, docusu=:docusu, fotusu=:fotusu, etdusu=:etdusu, hisusu=:hisusu, tpodoc=:tpodoc, genusu=:genusu, fhnusu=:fhnusu, actusu=:actusu, idubi=:idubi WHERE idusu=:idusu";
         $result = $conexion->prepare($sql);
         $idusu = $this->getIdusu();
         $result->bindParam(":idusu", $idusu);
@@ -190,24 +181,22 @@ class Musu{
         $result->bindParam(":idper", $idper);
         $nomusu = $this->getNomusu();
         $result->bindParam(":nomusu", $nomusu);
-        $empusu = $this->getEmpusu();
-        $result->bindParam(":empusu", $empusu);
+        $apeusu = $this->getApeusu();
+        $result->bindParam(":apeusu", $apeusu);
         $emausu = $this->getEmausu();
         $result->bindParam(":emausu", $emausu);
         $pasusu = $this->getPasusu();
         $result->bindParam(":pasusu", $pasusu);
-        $nitusu = $this->getNitusu();
-        $result->bindParam(":nitusu", $nitusu);
+        $docusu = $this->getDocusu();
+        $result->bindParam(":docusu", $docusu);
         $fotusu = $this->getFotusu();
         $result->bindParam(":fotusu", $fotusu);
-        $expusu = $this->getExpusu();
-        $result->bindParam(":expusu", $expusu);
+        $etdusu = $this->getEtdusu();
+        $result->bindParam(":etdusu", $etdusu);
         $hisusu = $this->getHisusu();
         $result->bindParam(":hisusu", $hisusu);
-        $salusu = $this->getSalusu();
-        $result->bindParam(":salusu", $salusu);
-        $tponit = $this->getTponit();
-        $result->bindParam(":tponit", $tponit);
+        $tpodoc = $this->getTpodoc();
+        $result->bindParam(":tpodoc", $tpodoc);
         $genusu = $this->getGenusu();
         $result->bindParam(":genusu", $genusu);
         $fhnusu = $this->getFhnusu();

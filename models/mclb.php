@@ -1,18 +1,15 @@
 <?php
 class Mclb{
     private $idclb;
-    private $idins;
     private $nomclb;
     private $idubi;
-    private $anoforclb;
-    private $cstmenusu;
+    private $afclb;
+    private $cmclb;
     private $preclb;
+    private $desclb;
 
     function getIdclb(){
         return $this->idclb;
-    }
-    function getIdins(){
-        return $this->idins;
     }
     function getNomclb(){
         return $this->nomclb;
@@ -20,21 +17,21 @@ class Mclb{
     function getIdubi(){
         return $this->idubi;
     }
-    function getAnoforclb(){
-        return $this->anoforclb;
+    function getAfclb(){
+        return $this->afclb;
     }
-    function getCstmenusu(){
-        return $this->cstmenusu;
+    function getCmclb(){
+        return $this->cmclb;
     }
     function getPreclb(){
         return $this->preclb;
     }
+    function getDesclb(){
+        return $this->desclb;
+    }
     
     function setIdclb($idclb){
         $this->idclb = $idclb;
-    }
-    function setIdins($idins){
-        $this->idins = $idins;
     }
     function setNomclb($nomclb){
         $this->nomclb = $nomclb;
@@ -42,22 +39,25 @@ class Mclb{
     function setIdubi($idubi){
         $this->idubi = $idubi;
     }
-    function setAnoforclb($anoforclb){
-        $this->anoforclb = $anoforclb;
+    function setAfclb($afclb){
+        $this->afclb = $afclb;
     }
-    function setCstmenusu($cstmenusu){
-        $this->cstmenusu = $cstmenusu;
+    function setCmclb($cmclb){
+        $this->cmclb = $cmclb;
     }
     function setPreclb($preclb){
         $this->preclb = $preclb;
+    }
+    function setDesclb($desclb){
+        return $this->desclb;
     }
 
     public function getAll(){
         $res = NULL;
         $modelo = new Conexion();
         $conexion = $modelo->get_conexion();
-        $sql = "SELECT cl.idclb, cl.nomclb, cl.anoforclb, cl.cstmenusu, cl.preclb, ins.idins, ins.idusu, ins.idpla, ins.fhins, ins.etdins, ins.durins, ub.idubi, ub.nomubi, ub.depubi 
-        FROM club AS cl INNER JOIN inscripcion AS ins ON cl.idins=ins.idins INNER JOIN ubicacion AS ub ON cl.idubi=ub.idubi";
+        $sql = "SELECT cl.idclb, cl.nomclb, cl.afclb, cl.cmclb, cl.preclb, cl.desclb, ub.idubi, ub.nomubi, ub.depubi 
+        FROM club AS cl INNER JOIN ubicacion AS ub ON cl.idubi=ub.idubi";
         $result = $conexion->prepare($sql);
         $result->execute();
         $res = $result->fetchall(PDO::FETCH_ASSOC);
@@ -68,8 +68,8 @@ class Mclb{
         $res = NULL;
         $modelo = new Conexion();
         $conexion = $modelo->get_conexion();
-        $sql = "SELECT cl.idclb, cl.nomclb, cl.anoforclb, cl.cstmenusu, cl.preclb, ins.idins, ins.idusu, ins.idpla, ins.fhins, ins.etdins, ins.durins, ub.idubi, ub.nomubi, ub.depubi 
-        FROM club AS cl INNER JOIN inscripcion AS ins ON cl.idins=ins.idins INNER JOIN ubicacion AS ub ON cl.idubi=ub.idubi WHERE cl.idclb=:idclb";
+        $sql = "SELECT cl.idclb, cl.nomclb, cl.afclb, cl.cmclb, cl.preclb, cl.desclb, ub.idubi, ub.nomubi, ub.depubi 
+        FROM club AS cl INNER JOIN ubicacion AS ub ON cl.idubi=ub.idubi WHERE cl.idclb=:idclb";
         $result = $conexion->prepare($sql);
         $idclb = $this->getIdclb();
         $result->bindParam(":idclb", $idclb);
@@ -81,42 +81,42 @@ class Mclb{
     public function save(){
         $modelo = new Conexion();
         $conexion = $modelo->get_conexion();
-        $sql = "INSERT INTO club(idins, nomclb, idubi, anoforclb, cstmenusu, preclb) VALUES (:idins, :nomclb, :idubi, :anoforclb, :cstmenusu, :preclb)"
+        $sql = "INSERT INTO club(nomclb, idubi, afclb, cmclb, preclb, desclb) VALUES (:nomclb, :idubi, :afclb, :cmclb, :preclb, :desclb)";
         $result = $conexion->prepare($sql);
-        $idins = $this->getIdins();
-        $result->bindParam(":idins", $idins);
         $nomclb = $this->getNomclb();
         $result->bindParam(":nomclb", $nomclb);
         $idubi = $this->getIdubi();
         $result->bindParam(":idubi", $idubi);
-        $anoforclb = $this->getAnoforclb();
-        $result->bindParam(":anoforclb", $anoforclb);
-        $cstmenusu = $this->getCstmenusu();
-        $result->bindParam(":cstmenusu", $cstmenusu);
+        $afclb = $this->getAfclb();
+        $result->bindParam(":afclb", $afclb);
+        $cmclb = $this->getCmclb();
+        $result->bindParam(":cmclb", $cmclb);
         $preclb = $this->getPreclb();
         $result->bindParam(":preclb", $preclb);
+        $desclb = $this->getDesclb();
+        $result->bindParam(':desclb', $desclb);
         $result->execute();
     }
 
     public function edit(){
         $modelo = new Conexion();
         $conexion = $modelo->get_conexion();
-        $sql = "UPDATE club SET idins=:idins, nomclb=:nomclb, idubi=:idubi, anoforclb=:anoforclb, cstmenusu=:cstmenusu, preclb=:preclb WHERE idclb=:idclb";
+        $sql = "UPDATE club SET nomclb=:nomclb, idubi=:idubi, afclb=:afclb, cmclb=:cmclb, preclb=:preclb, desclb=:desclb WHERE idclb=:idclb";
         $result = $conexion->prepare($sql);
         $idclb = $this->getIdclb();
         $result->bindParam(":idclb", $idclb);
-        $idins = $this->getIdins();
-        $result->bindParam(":idins", $idins);
         $nomclb = $this->getNomclb();
         $result->bindParam(":nomclb", $nomclb);
         $idubi = $this->getIdubi();
         $result->bindParam(":idubi", $idubi);
-        $anoforclb = $this->getAnoforclb();
-        $result->bindParam(":anoforclb", $anoforclb);
-        $cstmenusu = $this->getCstmenusu();
-        $result->bindParam(":cstmenusu", $cstmenusu);
+        $afclb = $this->getAfclb();
+        $result->bindParam(":afclb", $afclb);
+        $cmclb = $this->getCmclb();
+        $result->bindParam(":cmclb", $cmclb);
         $preclb = $this->getPreclb();
         $result->bindParam(":preclb", $preclb);
+        $desclb = $this->getDesclb();
+        $result->bindParam(':desclb', $desclb);
         $result->execute();
     }
 
